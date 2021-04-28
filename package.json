@@ -1,10 +1,10 @@
 {
-  "name": "weather-awesome",
-  "version": "0.0.0",
+  "name": "app-simple-weather-ngrx",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --output-path docs --base-href /app-simple-weather-ngrx/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.1.0",
+    "@angular/cdk": "^11.2.10",
     "@angular/common": "~11.1.0",
     "@angular/compiler": "~11.1.0",
     "@angular/core": "~11.1.0",
@@ -19,7 +20,14 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
-    "rxjs": "~6.6.0",
+    "@costlydeveloper/ngx-awesome-popup": "^0.0.1-alpha10",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^8.0.1",
+    "@ngrx/router-store": "^8.0.1",
+    "@ngrx/store": "^8.0.1",
+    "@ngrx/store-devtools": "^8.0.1",
+    "primeng": "^11.4.0",
+    "rxjs": "~6.5.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

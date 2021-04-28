@@ -1,0 +1,34 @@
+<!--[@enterDialogAnimation]-->
+<div>
+	
+	<div class="login-page">
+		<div class="signup-form">
+			<div class="form-wrapper">
+				
+				<div class="row justify-content-center">
+					
+					<div class="col-md-12">
+						<div class="w-100 text-center mb-3">
+							<img src="assets/images/logo.png">
+						</div>
+						<h2>Sign in</h2>
+						<p class="lead">Weather application.</p>
+						
+						<app-login-form
+								[formObjectInput]="user"
+						></app-login-form>
+						
+						<div class="form-group">
+							<button class="btn btn-primary btn-block btn-lg" type="submit" (click)="onSubmit()">Sign In</button>
+						</div>
+						<p class="small text-center">By clicking the Sign In button, you agree to use this awesome app.</p>
+					
+					</div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+	</div>
+</div>

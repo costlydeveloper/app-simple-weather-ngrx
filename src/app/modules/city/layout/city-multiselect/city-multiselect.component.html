@@ -1,0 +1,9 @@
+<h5>Select the city</h5>
+<p-multiSelect
+		[options]="cities$ | async"
+		[(ngModel)]="selected"
+		(onChange)="onMultiselectChange()"
+		optionLabel="name"
+		defaultLabel="Select a City"
+		class="multiselect-cities"
+></p-multiSelect>
