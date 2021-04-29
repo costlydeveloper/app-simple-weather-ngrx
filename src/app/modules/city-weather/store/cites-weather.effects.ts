@@ -10,7 +10,7 @@ import {CityWeatherActionType, RequestCitiesWeatherAction, RespondCitiesWeatherA
 @Injectable()
 export class CitesWeatherEffects {
 
-	@Effect()
+/*	@Effect()
 	requestCities$: Observable<Action> = this.actions$.pipe(
 		ofType<RequestCitiesWeatherAction>(CityWeatherActionType.REQUEST_CITIES_WEATHER),
 		switchMap((action:RequestCitiesWeatherAction) => {
@@ -21,7 +21,42 @@ export class CitesWeatherEffects {
 				})
 			);
 		})
+	);*/
+	@Effect()
+	requestCities$: Observable<Action> = this.actions$.pipe(
+		ofType<RequestCitiesWeatherAction>(CityWeatherActionType.REQUEST_CITIES_WEATHER),
+		switchMap((action:RequestCitiesWeatherAction) => {
+			const {ids} = action.payload;
+			return this.cityService.getCitiesWeatherJSON().pipe(
+				map((citiesWeatherResponse: ICityWeatherAPIResponse) => {
+					return new RespondCitiesWeatherAction({citiesWeatherResponse});
+				})
+			);
+		})
 	);
+
+	/*this.downLoadFile(JSON.stringify(citiesWeatherResponse), 'application/json');
+	downLoadFile(data: any, type: string) {
+		let blob = new Blob([data], { type: type});
+		let url = window.URL.createObjectURL(blob);
+		let pwa = window.open(url);
+		if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+			alert( 'Please disable your Pop-up blocker and try again.');
+		}
+	}*/
+
+/*	@Effect()
+	requestCities$: Observable<Action> = this.actions$.pipe(
+		ofType<RequestCitiesWeatherAction>(CityWeatherActionType.REQUEST_CITIES_WEATHER),
+		switchMap((action:RequestCitiesWeatherAction) => {
+			const {ids} = action.payload;
+			return this.cityService.getCitiesWeatherJSON().pipe(
+				map((citiesWeatherResponse: ICityWeatherAPIResponse) => {
+					return new RespondCitiesWeatherAction({citiesWeatherResponse});
+				})
+			);
+		})
+	);*/
 
 	constructor(
 		private readonly actions$: Actions,

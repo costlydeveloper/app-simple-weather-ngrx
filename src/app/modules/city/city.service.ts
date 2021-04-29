@@ -56,6 +56,7 @@ export class CityService {
 
 			}
 		];
+
 		return of(cities);
 	}
 }

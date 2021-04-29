@@ -2,7 +2,7 @@ import {City, ICity} from '../city/city.model';
 
 //Interface
 
-export interface ICityWeatherAPIResponse extends ICity {
+export interface ICityWeatherAPIResponse {
 	cnt: number;
 	list: ICityWeather[];
 }
@@ -10,8 +10,9 @@ export interface ICityWeatherAPIResponse extends ICity {
 export interface ICityWeather extends ICity {
 	coord: ICoordinates;
 	sys: ISys;
-	weather: IWeather;
+	weather: IWeather[];
 	main: IMain;
+	visibility: number;
 	wind: IWind;
 	clouds: IClouds;
 	dt: number;
@@ -58,7 +59,7 @@ export interface IWeather {
 export class CityWeather extends City implements ICityWeather {
 	coord: ICoordinates = new Coordinates();
 	sys: ISys           = new Sys();
-	weather: IWeather   = new Weather();
+	weather: IWeather[]   = [];
 	main: IMain         = new Main();
 	visibility: number  = null;
 	wind: IWind         = new Wind();
