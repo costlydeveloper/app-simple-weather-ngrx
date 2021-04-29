@@ -15,8 +15,7 @@ export class CityMultiselectComponent {
 	@Output() selectedCities = new EventEmitter<ICity[]>();
 	selected: ICity[]        = [];
 
-	onMultiselectChange(): void {
+	submit(): void {
 		this.selectedCities.emit(this.selected);
 	}
-
 }

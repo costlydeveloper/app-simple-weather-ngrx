@@ -1080,6 +1080,7 @@ p-listbox.ng-dirty.ng-invalid > .p-listbox {
   border: 1px solid #ced4da;
   border-radius: 3px;
   background: #ffffff;
+  width: 200px;
   }
 
 .p-multiselect:not(.p-disabled):hover {
@@ -5685,5 +5686,3 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-sortable-column-icon.pi-sort-amount-down:before {
   content: '\f161' !important;
   }
-
-

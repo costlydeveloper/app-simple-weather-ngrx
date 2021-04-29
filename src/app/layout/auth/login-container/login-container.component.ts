@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogLayoutDisplay, ToastNotificationInitializer} from '@costlydeveloper/ngx-awesome-popup';
+import {ToastNotification} from '../../../library/popups/toast';
 import {LoggedUserPermissionsService} from '../../../library/secure-data/logged-user-permissions.service';
 import {LibraryValidation} from '../../../library/validation/vaidation';
 import {IUser, User} from '../../../modules/user/user.model';
@@ -14,6 +15,7 @@ export class LoginContainerComponent implements OnInit {
 	user: IUser                                                = new User();
 	toastValidationIsReady                                     = true;
 	stringValidation: LibraryValidation.Class.StringValidation = new LibraryValidation.Class.StringValidation();
+	toastNotification = new ToastNotification();
 
 	constructor(private loggedUserPermissionService: LoggedUserPermissionsService) {
 	}
@@ -33,23 +35,10 @@ export class LoginContainerComponent implements OnInit {
 		if (this.validation()) {
 			this.loggedUserPermissionService.setLoggedUser(this.user);
 		} else {
-			this.toastValidationError();
+			this.toastNotification.forceSingleToast('Warning!', 'Form is not valid!', DialogLayoutDisplay.WARNING);
 		}
 
 	}
 
-	toastValidationError() {
-		if (this.toastValidationIsReady) {
-			this.toastValidationIsReady = false;
-			const newToastNotification  = new ToastNotificationInitializer();
-			newToastNotification.setTitle('Warning!');
-			newToastNotification.setMessage('Form is not valid!');
-			newToastNotification.setConfig({
-				LayoutType: DialogLayoutDisplay.WARNING
-			});
-			newToastNotification.openToastNotification$().subscribe(resp => {
-				this.toastValidationIsReady = true;
-			});
-		}
-	}
+
 }

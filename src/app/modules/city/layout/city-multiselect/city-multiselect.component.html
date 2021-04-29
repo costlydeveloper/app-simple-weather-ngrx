@@ -2,8 +2,8 @@
 <p-multiSelect
 		[options]="cities$ | async"
 		[(ngModel)]="selected"
-		(onChange)="onMultiselectChange()"
 		optionLabel="name"
 		defaultLabel="Select a City"
 		class="multiselect-cities"
 ></p-multiSelect>
+<button class="btn btn-success submit-city" (click)="submit()">Submit</button>

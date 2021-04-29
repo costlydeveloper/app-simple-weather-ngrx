@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {DialogLayoutDisplay} from '@costlydeveloper/ngx-awesome-popup';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
+import {ToastNotification} from '../../../library/popups/toast';
 import {RequestCitiesWeatherAction} from '../../city-weather/store/cites-weather.actions';
 import {ICity} from '../city.model';
 import {RequestCityAction} from '../store/city.actions';
@@ -20,6 +22,8 @@ export class CityComponent implements OnInit {
 	selectedCities: ICity[] = [];
 	cities$: Observable<ICity[]>;
 	loader$: Observable<boolean>;
+	toastNotification = new ToastNotification();
+
 
 	constructor(private store: Store<any>) {
 	}
@@ -49,12 +53,15 @@ export class CityComponent implements OnInit {
 			    string += ',';
 			}
 		});
-		this.store.dispatch(new RequestCitiesWeatherAction({ids: string}));
+		 if(string){
+			 this.store.dispatch(new RequestCitiesWeatherAction({ids: string}));
+		 } else {
+		this.toastNotification.forceSingleToast('Notice!', 'City is not selected!', DialogLayoutDisplay.INFO);
+		 }
+
+
+
 	}
 
-	stringMapper(): void {
 
-
-
-	}
 }
