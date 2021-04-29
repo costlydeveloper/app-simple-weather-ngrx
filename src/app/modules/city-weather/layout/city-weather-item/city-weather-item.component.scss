@@ -1,0 +1,8 @@
+.inline-list-item{
+  list-style: none;
+  text-align: center;
+  }
+
+.first-capital::first-letter{
+  text-transform: capitalize;
+  }

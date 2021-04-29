@@ -43,6 +43,8 @@ export class CityComponent implements OnInit {
 			val => {
 				// console.log(val);
 			});
+
+		this.selectedCitiesTrigger([{id: 342, name: 'tmp'}]);
 	}
 
 	selectedCitiesTrigger(cities: ICity[]): void {
