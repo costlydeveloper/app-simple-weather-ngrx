@@ -12,7 +12,7 @@ export function debugMetaReducer(
 
 		const logData = {
 			prefixColor: `background: #610b0b; color: #cc2222`,
-			suffixColor: `background: #ffffff; color: #cc2222`,
+			suffixColor: `background: #cc2222; color: #ffffff`,
 			prefixText : `${moduleName}`,
 			suffixText : ` ${actionName} `
 		};

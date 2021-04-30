@@ -4,10 +4,10 @@ export const cityWeatherStateName = 'city-weather-module';
 
 export interface ICityWeatherModuleState {
 	citiesWeather: ICityWeather[];
-	cityWeatherLoader: boolean
+	cityWeatherLoader: boolean;
 }
 
 export const initialCityWeatherModuleState: ICityWeatherModuleState = {
-	citiesWeather: [],
+	citiesWeather    : [],
 	cityWeatherLoader: false
 };

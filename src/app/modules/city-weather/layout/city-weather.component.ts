@@ -41,12 +41,12 @@ export class CitiesWeatherComponent implements OnInit {
 
 		this.citiesWeather$.subscribe(
 			val => {
-				console.log(val);
+				// console.log(val);
 				// this.downLoadFile(JSON.stringify(val), 'application/json');
 			});
 		this.loader$.subscribe(
 			val => {
-				console.log(val);
+				//console.log(val);
 			});
 	}
 

@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {metaReducers} from './app.reducer';
 import {CitesWeatherModule} from './modules/city-weather/cites-weather.module';
 import {CityModule} from './modules/city/city.module';
+import {DailyWeatherModule} from './modules/daily-wether/daily-weather.module';
 import {PagesModule} from './pages/pages.module';
 import { LoginContainerComponent } from './layout/auth/login-container/login-container.component';
 import { LoginFormComponent } from './layout/auth/login-form/login-form.component';
@@ -52,7 +53,8 @@ import { WeatherContainerComponent } from './layout/weather/weather-container/we
 		}),
 		EffectsModule.forRoot([]),
 		CityModule,
-		CitesWeatherModule
+		CitesWeatherModule,
+		DailyWeatherModule
 	],
     providers   : [],
     bootstrap   : [AppComponent]

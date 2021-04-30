@@ -33,6 +33,7 @@ export interface ISys {
 export interface IWind {
 	speed: number;
 	deg: number;
+	gust?:  number;
 }
 
 export interface IMain {
@@ -42,6 +43,9 @@ export interface IMain {
 	temp_max: number;
 	pressure: number;
 	humidity: number;
+	sea_level?:  number;
+	grnd_level?: number;
+	temp_kf?:    number;
 }
 
 export interface IClouds {
