@@ -11,8 +11,8 @@ export function debugMetaReducer(
 		const actionName      = actionTypeSplit.length > 1 ? `${actionTypeSplit[1]}` : '';
 
 		const logData = {
-			prefixColor: `background: #610b0b; color: #cc2222`,
-			suffixColor: `background: #cc2222; color: #ffffff`,
+			prefixColor: `background: #610b0b; color: #cc3333`,
+			suffixColor: `background: #610b0b; color: #cc6666`,
 			prefixText : `${moduleName}`,
 			suffixText : ` ${actionName} `
 		};
@@ -25,7 +25,7 @@ export function debugMetaReducer(
 		}
 
 		console.groupCollapsed(
-			`%cNgRx store update by %c${logData.prefixText}%c %c${logData.suffixText}`,
+			`%c update %c${logData.prefixText}%c %c${logData.suffixText}`,
 			`color: #961515`,
 			`${logData.prefixColor}`,
             ``,

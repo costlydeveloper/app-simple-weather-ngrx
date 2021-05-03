@@ -1,6 +1,6 @@
-<p>{{cityDailyWeather?.city.name}}</p>
-<div class="row">
-	<div class="card col-md-2" *ngFor="let weather of weatherList">
+<a routerLink="/weather/{{cityDailyWeather?.city.name.toLowerCase()}}">{{cityDailyWeather?.city.name}}</a>
+<div *ngIf="!dayParam" class="row">
+	<div class="card col-md-2 pointer" *ngFor="let weather of weatherList" routerLink="/weather/{{cityDailyWeather?.city.name.toLowerCase()}}/{{weather.dayName}}">
 		<div class="card-body">
 			<div class="row text-center">
 				<div class="col-md-12">
@@ -13,6 +13,26 @@
 					<div class="tmp-wrap">
 						<span class="tmp-max">{{weather.tempMax}}</span>
 						<span class="tmp-min">{{weather.tempMin}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="dayParam" class="row">
+	<p>{{dayParam}}</p>
+	<div class="card col-md-2 pointer" *ngFor="let weather of specificDayWeatherList" >
+		<div class="card-body">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<p class="card-text first-capital">{{weather.hour}}</p>
+				</div>
+				<div class="col-md-12">
+					<p class="card-text"><img src="{{weather.iconURL}}" alt="..."></p>
+				</div>
+				<div class="col-md-12">
+					<div class="tmp-wrap">
+						<span class="tmp-max">{{weather.temp}}</span>
 					</div>
 				</div>
 			</div>

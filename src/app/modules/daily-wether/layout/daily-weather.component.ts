@@ -10,6 +10,7 @@ import {selectDailyWeather, selectDailyWeatherLoader} from '../store/daily-weath
 		<app-daily-weather-item
 				*ngIf="!(citiesDailyWeatherLoader$ | async)"
 				[cityDailyWeather]="citiesDailyWeather$ | async"
+				[dayParam]="dayParam"
 		></app-daily-weather-item>`
 })
 export class DailyWeatherComponent implements OnInit {
@@ -17,6 +18,7 @@ export class DailyWeatherComponent implements OnInit {
 	citiesDailyWeather$: Observable<ICityDailyWeather>;
 	citiesDailyWeatherLoader$: Observable<boolean>;
 	@Input() cityID: number;
+	@Input() dayParam: string;
 
 	constructor(private store: Store<any>) {
 		this.citiesDailyWeather$       = this.store.pipe(select(selectDailyWeather));
@@ -26,10 +28,8 @@ export class DailyWeatherComponent implements OnInit {
 	ngOnInit(): void {
 		this.citiesDailyWeather$.subscribe(
 			val => {
-				console.log('val', val);
+				 console.log('val', val);
 			});
-
 	}
-
 
 }

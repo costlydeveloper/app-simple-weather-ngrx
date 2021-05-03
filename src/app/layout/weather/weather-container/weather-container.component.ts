@@ -19,6 +19,7 @@ export class WeatherContainerComponent implements OnInit {
 	citiesDailyWeather$: Observable<ICityDailyWeather>;
 	dailyWeatherLoader$: Observable<boolean>;
 	cityParam: string;
+	dayParam: string;
 	city: ICity;
 
 	constructor(private route: ActivatedRoute, private store: Store<any>) {
@@ -31,6 +32,7 @@ export class WeatherContainerComponent implements OnInit {
 
 		this.route.paramMap.subscribe((params: ParamMap) => {
 			this.cityParam = params.get('city-name');
+			this.dayParam = params.get('day');
 
 			this.cities$.subscribe(items => {
 				this.city = items.find((item) => {

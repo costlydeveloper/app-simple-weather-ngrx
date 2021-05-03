@@ -22,6 +22,11 @@ export const PAGE_ROUTES: Routes = [
         children : [
             {path: 'weather', redirectTo: 'weather/', pathMatch: 'full'},
             {
+                path        : 'weather/:city-name/:day',
+                loadChildren: () => import('./weather-page/weather.module').then(mod => mod.WeatherModule),
+                canActivate : [AppGuard]
+            },
+            {
                 path        : 'weather/:city-name',
                 loadChildren: () => import('./weather-page/weather.module').then(mod => mod.WeatherModule),
                 canActivate : [AppGuard]

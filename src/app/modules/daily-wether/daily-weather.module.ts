@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {DailyWeatherItemComponent} from './layout/daily-weather-item/daily-weather-item.component';
@@ -14,11 +15,12 @@ import {dailyWeatherStateName} from './store/daily-weather.state';
   exports     : [
     DailyWeatherComponent
   ],
-  imports     : [
-    CommonModule,
-    StoreModule.forFeature(dailyWeatherStateName, dailyWeatherReducer),
-    EffectsModule.forFeature([DailyWeatherEffects])
-  ]
+	imports: [
+		CommonModule,
+		StoreModule.forFeature(dailyWeatherStateName, dailyWeatherReducer),
+		EffectsModule.forFeature([DailyWeatherEffects]),
+		RouterModule
+	]
 })
 export class DailyWeatherModule {
 }

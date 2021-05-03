@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ICityDailyWeather, IDailyWeatherList} from '../../daily-weather.model';
 import * as moment from 'moment';
 
@@ -7,11 +7,12 @@ import * as moment from 'moment';
   templateUrl: './daily-weather-item.component.html',
   styleUrls: ['./daily-weather-item.component.scss']
 })
-export class DailyWeatherItemComponent implements OnInit {
+export class DailyWeatherItemComponent implements OnInit, OnChanges {
 
   @Input() cityDailyWeather: ICityDailyWeather;
-
+  @Input() dayParam: string;
   weatherList: DisplayWeatherItem[];
+  specificDayWeatherList: OneDayWeather[];
 
 
   constructor() { }
@@ -27,6 +28,21 @@ export class DailyWeatherItemComponent implements OnInit {
         }
     })
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes['dayParam'] && this.dayParam){
+      console.log(this.dayParam);
+
+      this.specificDayWeatherList = this.cityDailyWeather.list.filter(item => moment(item.dt_txt).format('ddd') === this.dayParam).map(item => {
+        const hour = moment(item.dt_txt).format('HH:mm');
+        return {
+          hour: hour,
+          iconURL: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,
+          temp: `${item.main.temp}°`,
+        }
+      })
+    }
+  }
 }
 
 interface DisplayWeatherItem {
@@ -34,4 +50,10 @@ interface DisplayWeatherItem {
   iconURL: string;
   tempMax: string;
   tempMin: string;
+}
+
+interface OneDayWeather {
+  hour: string;
+  iconURL: string;
+  temp: string;
 }
