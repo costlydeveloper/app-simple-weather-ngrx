@@ -4,7 +4,7 @@ import {dailyWeatherStateName, IDailyWeatherModuleState} from './daily-weather.s
 
 const selectDailyCityWeatherModule= createFeatureSelector<IDailyWeatherModuleState>(dailyWeatherStateName);
 
-export const selectDailyWeather: Selector<object, ICityDailyWeather[]> = createSelector(
+export const selectDailyWeather: Selector<object, ICityDailyWeather> = createSelector(
 	selectDailyCityWeatherModule,
 	(state: IDailyWeatherModuleState) => {
 		return state.dailyWeather

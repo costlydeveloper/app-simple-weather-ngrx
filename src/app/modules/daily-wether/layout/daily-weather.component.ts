@@ -1,14 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {ICityDailyWeather} from '../daily-weather.model';
+import {selectDailyWeather, selectDailyWeatherLoader} from '../store/daily-weather.selector';
 
 @Component({
-  selector: 'app-daily-weather',
-  template: '<app-daily-weather-item></app-daily-weather-item>'
+	selector: 'app-daily-weather',
+	template: `
+		<app-daily-weather-item
+				*ngIf="!(citiesDailyWeatherLoader$ | async)"
+				[cityDailyWeather]="citiesDailyWeather$ | async"
+		></app-daily-weather-item>`
 })
 export class DailyWeatherComponent implements OnInit {
 
-  constructor() { }
+	citiesDailyWeather$: Observable<ICityDailyWeather>;
+	citiesDailyWeatherLoader$: Observable<boolean>;
+	@Input() cityID: number;
 
-  ngOnInit(): void {
-  }
+	constructor(private store: Store<any>) {
+		this.citiesDailyWeather$       = this.store.pipe(select(selectDailyWeather));
+		this.citiesDailyWeatherLoader$ = this.store.pipe(select(selectDailyWeatherLoader));
+	}
+
+	ngOnInit(): void {
+		this.citiesDailyWeather$.subscribe(
+			val => {
+				console.log('val', val);
+			});
+
+	}
+
 
 }

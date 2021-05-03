@@ -18,11 +18,7 @@ export function dailyWeatherReducer(
 			const newState = {
 				...oldState,
 
-				// TODO napraviti immutable
-				dailyWeather: [...oldState.dailyWeather, {
-					list: dailyWeatherResponse.list,
-					city: dailyWeatherResponse.city
-				}],
+				dailyWeather: dailyWeatherResponse,
 				dailyWeatherLoader: false
 			};
 

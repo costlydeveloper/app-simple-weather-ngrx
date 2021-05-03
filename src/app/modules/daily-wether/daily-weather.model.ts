@@ -31,6 +31,7 @@ export interface IDailyWeatherList {
 	pop:        number;
 	sys:        Sys;
 	dt_txt:     string;
+	dayName:     string;
 	rain?:      Rain;
 }
 

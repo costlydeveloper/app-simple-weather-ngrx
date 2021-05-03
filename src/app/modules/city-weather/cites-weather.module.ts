@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {DataViewModule} from 'primeng/dataview';
@@ -14,11 +15,12 @@ import {cityWeatherStateName} from './store/cites-weather.state';
 	exports     : [
 		CitiesWeatherComponent
 	],
-	imports     : [
+	imports: [
 		CommonModule,
 		DataViewModule,
 		StoreModule.forFeature(cityWeatherStateName, citesWeatherReducer),
-		EffectsModule.forFeature([CitesWeatherEffects])
+		EffectsModule.forFeature([CitesWeatherEffects]),
+		RouterModule
 	]
 })
 export class CitesWeatherModule {

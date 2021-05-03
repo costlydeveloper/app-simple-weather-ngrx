@@ -1,1 +1,21 @@
-<p>daily-weather-item works!</p>
+<p>{{cityDailyWeather?.city.name}}</p>
+<div class="row">
+	<div class="card col-md-2" *ngFor="let weather of weatherList">
+		<div class="card-body">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<p class="card-text first-capital">{{weather.dayName}}</p>
+				</div>
+				<div class="col-md-12">
+					<p class="card-text"><img src="{{weather.iconURL}}" alt="..."></p>
+				</div>
+				<div class="col-md-12">
+					<div class="tmp-wrap">
+						<span class="tmp-max">{{weather.tempMax}}</span>
+						<span class="tmp-min">{{weather.tempMin}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

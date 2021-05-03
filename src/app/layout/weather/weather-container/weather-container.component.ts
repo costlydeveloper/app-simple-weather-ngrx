@@ -16,9 +16,10 @@ import {selectDailyWeather, selectDailyWeatherLoader} from '../../../modules/dai
 export class WeatherContainerComponent implements OnInit {
 
 	cities$: Observable<ICity[]>;
-	citiesDailyWeather$: Observable<ICityDailyWeather[]>;
+	citiesDailyWeather$: Observable<ICityDailyWeather>;
 	dailyWeatherLoader$: Observable<boolean>;
-	cityName: string;
+	cityParam: string;
+	city: ICity;
 
 	constructor(private route: ActivatedRoute, private store: Store<any>) {
 	}
@@ -28,19 +29,16 @@ export class WeatherContainerComponent implements OnInit {
 		this.dailyWeatherLoader$ = this.store.pipe(select(selectDailyWeatherLoader));
 		this.citiesDailyWeather$ = this.store.pipe(select(selectDailyWeather));
 
-
 		this.route.paramMap.subscribe((params: ParamMap) => {
-			this.cityName = params.get('city-name');
+			this.cityParam = params.get('city-name');
 
 			this.cities$.subscribe(items => {
-				const city = items.find((item) => {
-
-					return item.name.toLowerCase() === this.cityName.toLowerCase();
+				this.city = items.find((item) => {
+					return item.name.toLowerCase() === this.cityParam.toLowerCase();
 				});
 
-				if (city) {
-					console.log('WeatherContainerComponent');
-					this.store.dispatch(new RequestDailyWeatherAction({id: city.id}));
+				if (this.city) {
+					this.store.dispatch(new RequestDailyWeatherAction({id: this.city.id}));
 				}
 			});
 		});
