@@ -17,5 +17,5 @@ export class RespondCityAction implements Action {
 }
 
 export type CityAction =
-	| RequestCityAction
+	 RequestCityAction
 	| RespondCityAction;

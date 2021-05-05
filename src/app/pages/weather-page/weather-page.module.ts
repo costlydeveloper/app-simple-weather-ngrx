@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {WeatherRoutingModule} from './weather-routing.module';
+import {WeatherPageRoutingModule} from './weather-page-routing.module';
 
 
 @NgModule({
     declarations: [],
     imports     : [
         CommonModule,
-        WeatherRoutingModule
+        WeatherPageRoutingModule
     ]
 })
-export class WeatherModule {
+export class WeatherPageModule {
 }

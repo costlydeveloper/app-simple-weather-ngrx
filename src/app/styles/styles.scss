@@ -3,7 +3,9 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: $textColor;
-  background: $backgroundColorMain;
+  background-image: url('../../assets/images/pexels-eberhard-grossgasteiger-1366922.jpg');
+  background-position: top;
+  background-size: auto;
   }
 
 .main-wrapper {

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
 import {IUser} from '../../modules/user/user.model';
 
 @Injectable({
@@ -9,7 +10,7 @@ export class LoggedUserPermissionsService {
 
     private xToken: string | null = null;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private store: Store<any>) {
         if (this.router.url.includes('auth')) {
             this.xToken = null;
             localStorage.clear();
@@ -46,6 +47,10 @@ export class LoggedUserPermissionsService {
         this.xToken = _LoggedUser.email + new Date().toLocaleDateString();
         localStorage.setItem('X-token', this.xToken);
         this.router.navigate(['/weather']);
+    }
+
+    getLoggedUserToken(): string {
+        return localStorage.getItem('X-token');
     }
 
     private __delay__(timer: number = 2000): Promise<void> {

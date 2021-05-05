@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {ICityDailyWeather} from '../daily-weather.model';
 import {selectDailyWeather, selectDailyWeatherLoader} from '../store/daily-weather.selector';
 
@@ -13,10 +13,12 @@ import {selectDailyWeather, selectDailyWeatherLoader} from '../store/daily-weath
 				[dayParam]="dayParam"
 		></app-daily-weather-item>`
 })
-export class DailyWeatherComponent implements OnInit {
+export class DailyWeatherComponent implements OnInit, OnDestroy {
 
 	citiesDailyWeather$: Observable<ICityDailyWeather>;
 	citiesDailyWeatherLoader$: Observable<boolean>;
+	subscriptions: Subscription[] = [];
+
 	@Input() cityID: number;
 	@Input() dayParam: string;
 
@@ -26,10 +28,12 @@ export class DailyWeatherComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.citiesDailyWeather$.subscribe(
+		this.subscriptions.push(this.citiesDailyWeather$.subscribe(
 			val => {
-				 console.log('val', val);
-			});
+				 // console.log('val', val);
+			}));
 	}
-
+	ngOnDestroy() {
+		this.subscriptions.forEach(sub => sub.unsubscribe());
+	}
 }

@@ -24,7 +24,7 @@ export class CitesWeatherService {
 		.pipe(map(res => res.body));
 	}
 
-	getCitiesWeatherJSON(): Observable<ICityWeatherAPIResponse> {
+	getCitiesWeatherJSON(ids: string): Observable<ICityWeatherAPIResponse> {
 		const citiesWeatherJson: ICityWeatherAPIResponse = {
 			cnt : 5,
 			list: [
@@ -223,7 +223,7 @@ export class CitesWeatherService {
 					id: 3194475,
 					name: 'Njivice'
 				}
-			]
+			],
 		};
 
 		return of(citiesWeatherJson);

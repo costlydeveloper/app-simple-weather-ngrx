@@ -1,3 +1,4 @@
+import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -14,20 +15,24 @@ import {metaReducers} from './app.reducer';
 import {CitesWeatherModule} from './modules/city-weather/cites-weather.module';
 import {CityModule} from './modules/city/city.module';
 import {DailyWeatherModule} from './modules/daily-wether/daily-weather.module';
+import {FavoritesModule} from './modules/favorites/favorites.module';
 import {PagesModule} from './pages/pages.module';
 import { LoginContainerComponent } from './layout/auth/login-container/login-container.component';
 import { LoginFormComponent } from './layout/auth/login-form/login-form.component';
-import { WeatherContainerComponent } from './layout/weather/weather-container/weather-container.component';
+import { WeatherPageComponent } from './pages/weather-page/weather-page.component';
+import { FavoritesContainerComponent } from './layout/weather/favorites-container/favorites-container.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginContainerComponent,
         LoginFormComponent,
-        WeatherContainerComponent
+        WeatherPageComponent,
+        FavoritesContainerComponent
     ],
 	imports: [
 		BrowserModule,
+		CommonModule,
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
@@ -54,7 +59,8 @@ import { WeatherContainerComponent } from './layout/weather/weather-container/we
 		EffectsModule.forRoot([]),
 		CityModule,
 		CitesWeatherModule,
-		DailyWeatherModule
+		DailyWeatherModule,
+		FavoritesModule
 	],
     providers   : [],
     bootstrap   : [AppComponent]

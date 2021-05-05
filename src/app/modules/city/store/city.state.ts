@@ -8,7 +8,7 @@ export interface ICityModuleState {
 	cityLoader: boolean
 }
 
-export const initialCityModuleState = {
+export const initialCityModuleState: ICityModuleState = {
 	cities: [],
 	cityLoader: false
 };

@@ -31,7 +31,6 @@ export class DailyWeatherItemComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes['dayParam'] && this.dayParam){
-      console.log(this.dayParam);
 
       this.specificDayWeatherList = this.cityDailyWeather.list.filter(item => moment(item.dt_txt).format('ddd') === this.dayParam).map(item => {
         const hour = moment(item.dt_txt).format('HH:mm');

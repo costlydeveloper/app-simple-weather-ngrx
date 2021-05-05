@@ -1,9 +1,7 @@
 <div class="card pointer">
 	<div class="card-body">
-
-			<form #myFavoritesForm="ngForm" (change)="favoritesFormTrigger(myFavoritesForm.value)">
-			
-			<div class="row" routerLink="/weather/{{cityWeatherItem?.name.toLowerCase()}}">
+		
+			<div class="row" routerLink="/favorites/{{cityWeatherItem?.name.toLowerCase()}}">
 				<div class="col-md-12">
 					<h5 class="card-title">{{cityWeatherItem?.name}}</h5>
 				</div>
@@ -21,15 +19,8 @@
 				</div>
 			</div>
 			<div class="form-check-block">
-				<input class="p-checkbox"
-				       type="checkbox"
-				       id="favorite-{{cityWeatherItem?.id}}"
-				       name="favorite-{{cityWeatherItem?.id}}"
-				       [(ngModel)]="isFavorite"
-				       (change)="addRemoveFavorite(cityWeatherItem.id, $event)">
-				<label class="p-checkbox-label" for="favorite-{{cityWeatherItem?.id}}">Favorite</label>
+				<a (click)="removeFavorite(cityWeatherItem.id)" class="p-checkbox-label">Remove</a>
 			</div>
-		</form>
 	</div>
 
 </div>

@@ -10,7 +10,7 @@ import {CityWeatherActionType, RequestCitiesWeatherAction, RespondCitiesWeatherA
 @Injectable()
 export class CitesWeatherEffects {
 
-/*	@Effect()
+	@Effect()
 	requestCities$: Observable<Action> = this.actions$.pipe(
 		ofType<RequestCitiesWeatherAction>(CityWeatherActionType.REQUEST_CITIES_WEATHER),
 		switchMap((action:RequestCitiesWeatherAction) => {
@@ -21,19 +21,19 @@ export class CitesWeatherEffects {
 				})
 			);
 		})
-	);*/
-	@Effect()
+	);
+/*	@Effect()
 	requestCities$: Observable<Action> = this.actions$.pipe(
 		ofType<RequestCitiesWeatherAction>(CityWeatherActionType.REQUEST_CITIES_WEATHER),
 		switchMap((action:RequestCitiesWeatherAction) => {
 			const {ids} = action.payload;
-			return this.cityService.getCitiesWeatherJSON().pipe(
+			return this.cityService.getCitiesWeatherJSON(ids).pipe(
 				map((citiesWeatherResponse: ICityWeatherAPIResponse) => {
 					return new RespondCitiesWeatherAction({citiesWeatherResponse});
 				})
 			);
 		})
-	);
+	);*/
 
 	/*this.downLoadFile(JSON.stringify(citiesWeatherResponse), 'application/json');
 	downLoadFile(data: any, type: string) {

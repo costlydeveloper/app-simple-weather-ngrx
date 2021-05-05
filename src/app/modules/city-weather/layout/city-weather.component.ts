@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {combineLatest, forkJoin, Observable, Subscription} from 'rxjs';
+import {IFavorites} from '../../favorites/favorites.model';
+import {selectFavorites} from '../../favorites/store/favorites.selector';
 import {ICityWeather} from '../cites-weather.model';
+import {RequestCitiesWeatherAction} from '../store/cites-weather.actions';
 import {selectCitesLoader, selectCityWeather} from '../store/cites-weather.selector';
 
 
 @Component({
 	selector: 'app-city-weather',
-
 	template: `
 		<div class="container">
 			<div class="row hidden-md-up">
@@ -17,6 +19,7 @@ import {selectCitesLoader, selectCityWeather} from '../store/cites-weather.selec
 						
 						<div class="col-md-3 mb-4">
 							<app-city-weather-item
+									[isFavorite]="(favorites$ | async).cityIDs.indexOf(cityWeather.id) > -1"
 									[cityWeatherItem]="cityWeather"
 							></app-city-weather-item>
 						</div>
@@ -26,38 +29,49 @@ import {selectCitesLoader, selectCityWeather} from '../store/cites-weather.selec
 			</div>
 		</div>`
 })
-export class CitiesWeatherComponent implements OnInit {
+export class CitiesWeatherComponent implements OnInit, OnDestroy {
 
 	citiesWeather$: Observable<ICityWeather[]>;
+	favorites$: Observable<IFavorites>;
 	loader$: Observable<boolean>;
+	subscriptions: Subscription[] = [];
 
 	constructor(private store: Store<any>) {
 	}
 
 	ngOnInit(): void {
-
+		this.store.dispatch(new RequestCitiesWeatherAction({ids: ''}));
 		this.citiesWeather$ = this.store.pipe(select(selectCityWeather));
+		this.favorites$ = this.store.pipe(select(selectFavorites));
 		this.loader$        = this.store.pipe(select(selectCitesLoader));
 
-		this.citiesWeather$.subscribe(
+
+/*		combineLatest([this.citiesWeather$, this.favorites$ ]).subscribe(results => {
+			console.log('combineLatest ', results);
+		});*/
+
+/*		this.citiesWeather$.doOnNext(favorites$,
+			(list1, list2) => {
+				//DiffUtil list1 and list2 and return the filtered list
+			}
+		);*/
+		this.subscriptions.push(this.citiesWeather$.subscribe(
 			val => {
-				// console.log(val);
-				// this.downLoadFile(JSON.stringify(val), 'application/json');
-			});
-		this.loader$.subscribe(
+				 // console.log('citiesWeather$ ', val);
+			}));
+
+		this.subscriptions.push(this.favorites$.subscribe(
 			val => {
-				//console.log(val);
-			});
+				// console.log('favorites$', val);
+			}));
 	}
 
-
-	downLoadFile(data: any, type: string) {
-		let blob = new Blob([data], {type: type});
-		let url  = window.URL.createObjectURL(blob);
-		let pwa  = window.open(url);
-		if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-			alert('Please disable your Pop-up blocker and try again.');
-		}
+	ngOnDestroy() {
+		this.subscriptions.forEach(sub => sub.unsubscribe());
 	}
+
+}
+
+interface MergedCitesWeatherFavorites extends ICityWeather {
 
 }

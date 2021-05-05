@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {WeatherContainerComponent} from '../../layout/weather/weather-container/weather-container.component';
+import {WeatherPageComponent} from './weather-page.component';
 
 
 const routes: Routes = [
     {
         path     : '',
-        component: WeatherContainerComponent
+        component: WeatherPageComponent
     }
 ];
 
@@ -14,5 +14,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class WeatherRoutingModule {
+export class WeatherPageRoutingModule {
 }
