@@ -1,18 +1,19 @@
-.inline-list-item{
+.inline-list-item {
   list-style: none;
   text-align: center;
-  }
+}
 
-.first-capital::first-letter{
+.first-capital::first-letter {
   text-transform: capitalize;
-  }
-.p-checkbox-label{
-  top: -4px;
-  position: relative;
-  }
+}
 
-.form-check-block{
+.p-checkbox-label {
+  position: relative;
+  top: -4px;
+}
+
+.form-check-block {
   border-top: 1px solid #929292;
   margin-top: 10px;
   padding-top: 10px;
-  }
+}

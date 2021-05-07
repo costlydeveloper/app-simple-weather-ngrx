@@ -1,35 +1,50 @@
 <div class="card pointer">
-	<div class="card-body">
-
-			<form #myFavoritesForm="ngForm" (change)="favoritesFormTrigger(myFavoritesForm.value)">
-			
-			<div class="row" routerLink="/weather/{{cityWeatherItem?.name.toLowerCase()}}">
-				<div class="col-md-12">
-					<h5 class="card-title">{{cityWeatherItem?.name}}</h5>
-				</div>
-				<div class="col-md-6">
-					<p class="card-text">{{cityWeatherItem.weather[0].main}}</p>
-				</div>
-				<div class="col-md-6">
-					<ul class="list-group list-group-flush">
-						<li class="inline-list-item"><img src="http://openweathermap.org/img/w/{{cityWeatherItem.weather[0].icon}}.png"></li>
-						<li class="inline-list-item">C° {{cityWeatherItem.main.temp}}</li>
-					</ul>
-				</div>
-				<div class="col-md-12">
-					<p class="card-text first-capital">{{cityWeatherItem.weather[0].description}}</p>
-				</div>
-			</div>
-			<div class="form-check-block">
-				<input class="p-checkbox"
-				       type="checkbox"
-				       id="favorite-{{cityWeatherItem?.id}}"
-				       name="favorite-{{cityWeatherItem?.id}}"
-				       [(ngModel)]="isFavorite"
-				       (change)="addRemoveFavorite(cityWeatherItem.id, $event)">
-				<label class="p-checkbox-label" for="favorite-{{cityWeatherItem?.id}}">Favorite</label>
-			</div>
-		</form>
-	</div>
-
+  <div class="card-body">
+    <form
+      #myFavoritesForm="ngForm"
+      (change)="favoritesFormTrigger(myFavoritesForm.value)"
+    >
+      <div
+        class="row"
+        routerLink="/weather/{{ cityWeatherItem?.name.toLowerCase() }}"
+      >
+        <div class="col-md-12">
+          <h5 class="card-title">{{ cityWeatherItem?.name }}</h5>
+        </div>
+        <div class="col-md-6">
+          <p class="card-text">{{ cityWeatherItem.weather[0].main }}</p>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-group list-group-flush">
+            <li class="inline-list-item">
+              <img
+                src="http://openweathermap.org/img/w/{{
+                  cityWeatherItem.weather[0].icon
+                }}.png"
+              />
+            </li>
+            <li class="inline-list-item">C° {{ cityWeatherItem.main.temp }}</li>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <p class="card-text first-capital">
+            {{ cityWeatherItem.weather[0].description }}
+          </p>
+        </div>
+      </div>
+      <div class="form-check-block">
+        <input
+          class="p-checkbox"
+          id="favorite-{{ cityWeatherItem?.id }}"
+          type="checkbox"
+          name="favorite-{{ cityWeatherItem?.id }}"
+          [(ngModel)]="isFavorite"
+          (change)="addRemoveFavorite(cityWeatherItem.id, $event)"
+        />
+        <label class="p-checkbox-label" for="favorite-{{ cityWeatherItem?.id }}"
+          >Favorite</label
+        >
+      </div>
+    </form>
+  </div>
 </div>

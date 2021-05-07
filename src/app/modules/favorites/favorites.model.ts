@@ -1,7 +1,7 @@
 export interface IFavorites {
-	cityIDs: number[];
+  cityIDs: number[];
 }
 
 export class Favorites implements IFavorites {
-	cityIDs: number[] = [];
+  cityIDs: number[] = [];
 }

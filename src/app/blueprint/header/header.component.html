@@ -1,8 +1,14 @@
-<div class="topnav" id="topnav">
-	<div class="container">
-		<div class="logo-block-standard logo-block"><img src="assets/images/full-logo.png"></div>
-		<a routerLink="/weather" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
-		<a routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Favorites</a>
-	
-	</div>
+<div class="top-nav">
+  <div class="container">
+    <div class="logo-block">
+      <img src="assets/images/full-logo.png" />
+    </div>
+    <a
+      *ngFor="let item of menuItems"
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >{{ item.name }}</a
+    >
+  </div>
 </div>

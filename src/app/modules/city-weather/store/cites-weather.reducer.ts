@@ -1,32 +1,40 @@
-import {CityWeatherAction, CityWeatherActionType, RespondCitiesWeatherAction} from './cites-weather.actions';
-import {ICityWeatherModuleState, initialCityWeatherModuleState} from './cites-weather.state';
-
+import {
+  CityWeatherAction,
+  CityWeatherActionType,
+  RespondCitiesWeatherAction,
+} from './cites-weather.actions';
+import {
+  ICityWeatherModuleState,
+  initialCityWeatherModuleState,
+} from './cites-weather.state';
 
 export function citesWeatherReducer(
-	oldState: ICityWeatherModuleState = initialCityWeatherModuleState,
-	action: CityWeatherAction
+  oldState: ICityWeatherModuleState = initialCityWeatherModuleState,
+  action: CityWeatherAction
 ): ICityWeatherModuleState {
-	switch (action.type) {
-		case CityWeatherActionType.REQUEST_CITIES_WEATHER: {
-			const newState = {
-				...oldState,
-				cityWeatherLoader: true
-			};
+  switch (action.type) {
+    case CityWeatherActionType.REQUEST_CITIES_WEATHER: {
+      const newState = {
+        ...oldState,
+        cityWeatherLoader: true,
+      };
 
-			return newState;
-		}
-		case CityWeatherActionType.RESPOND_CITIES_WEATHER: {
-			const {citiesWeatherResponse }= (action as RespondCitiesWeatherAction).payload;
+      return newState;
+    }
+    case CityWeatherActionType.RESPOND_CITIES_WEATHER: {
+      const {
+        citiesWeatherResponse,
+      } = (action as RespondCitiesWeatherAction).payload;
 
-			const newState = {
-				...oldState,
-				citiesWeather: citiesWeatherResponse.list,
-				cityWeatherLoader: false
-			};
+      const newState = {
+        ...oldState,
+        citiesWeather: citiesWeatherResponse.list,
+        cityWeatherLoader: false,
+      };
 
-			return newState;
-		}
-		default:
-			return oldState;
-	}
+      return newState;
+    }
+    default:
+      return oldState;
+  }
 }

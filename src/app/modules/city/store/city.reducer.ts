@@ -1,32 +1,31 @@
-import {CityAction, CityActionType, RespondCityAction} from './city.actions';
-import {ICityModuleState, initialCityModuleState} from './city.state';
-
+import { CityAction, CityActionType, RespondCityAction } from './city.actions';
+import { ICityModuleState, initialCityModuleState } from './city.state';
 
 export function cityReducer(
-	oldState: ICityModuleState = initialCityModuleState,
-	action: CityAction
+  oldState: ICityModuleState = initialCityModuleState,
+  action: CityAction
 ): ICityModuleState {
-	switch (action.type) {
-		case CityActionType.REQUEST_CITIES: {
-			const newState = {
-				...oldState,
-				cityLoader: true
-			};
+  switch (action.type) {
+    case CityActionType.REQUEST_CITIES: {
+      const newState = {
+        ...oldState,
+        cityLoader: true,
+      };
 
-			return newState;
-		}
-		case CityActionType.RESPOND_CITIES: {
-			const {cities }= (action as RespondCityAction).payload;
+      return newState;
+    }
+    case CityActionType.RESPOND_CITIES: {
+      const { cities } = (action as RespondCityAction).payload;
 
-			const newState = {
-				...oldState,
-				cities,
-				cityLoader: false
-			};
+      const newState = {
+        ...oldState,
+        cities,
+        cityLoader: false,
+      };
 
-			return newState;
-		}
-		default:
-			return oldState;
-	}
+      return newState;
+    }
+    default:
+      return oldState;
+  }
 }

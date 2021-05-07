@@ -1,9 +1,14 @@
-.btn, .btn:active {
+.btn,
+.btn:active {
   min-width: 140px;
-  }
+}
 
 .fa {
   font-size: 21px;
   position: relative;
   top: 8px;
-  }
+}
+
+.input-group-addon {
+  background: #e8f0fe;
+}

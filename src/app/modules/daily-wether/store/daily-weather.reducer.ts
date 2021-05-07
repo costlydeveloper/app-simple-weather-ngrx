@@ -1,32 +1,41 @@
-import {DailyWeatherAction, DailyWeatherActionType, RespondDailyWeatherAction} from './daily-weather.actions';
-import {IDailyWeatherModuleState, initialDailyWeatherModuleState} from './daily-weather.state';
+import {
+  DailyWeatherAction,
+  DailyWeatherActionType,
+  RespondDailyWeatherAction,
+} from './daily-weather.actions';
+import {
+  IDailyWeatherModuleState,
+  initialDailyWeatherModuleState,
+} from './daily-weather.state';
 
 export function dailyWeatherReducer(
-	oldState: IDailyWeatherModuleState = initialDailyWeatherModuleState,
-	action: DailyWeatherAction): IDailyWeatherModuleState {
-	switch (action.type) {
-		case DailyWeatherActionType.REQUEST_DAILY_WEATHER: {
-			const newState = {
-				...oldState,
-				dailyWeatherLoader: true
-			};
-			return newState;
-		}
-		case DailyWeatherActionType.RESPONSE_DAILY_WEATHER: {
-			const {dailyWeatherResponse} = (action as RespondDailyWeatherAction).payload;
+  oldState: IDailyWeatherModuleState = initialDailyWeatherModuleState,
+  action: DailyWeatherAction
+): IDailyWeatherModuleState {
+  switch (action.type) {
+    case DailyWeatherActionType.REQUEST_DAILY_WEATHER: {
+      const newState = {
+        ...oldState,
+        dailyWeatherLoader: true,
+      };
+      return newState;
+    }
+    case DailyWeatherActionType.RESPONSE_DAILY_WEATHER: {
+      const {
+        dailyWeatherResponse,
+      } = (action as RespondDailyWeatherAction).payload;
 
-			const newState = {
-				...oldState,
+      const newState = {
+        ...oldState,
 
-				dailyWeather: dailyWeatherResponse,
-				dailyWeatherLoader: false
-			};
+        dailyWeather: dailyWeatherResponse,
+        dailyWeatherLoader: false,
+      };
 
-			return newState;
-		}
+      return newState;
+    }
 
-		default:
-			return oldState;
-
-	}
+    default:
+      return oldState;
+  }
 }

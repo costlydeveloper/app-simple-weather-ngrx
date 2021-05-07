@@ -1,13 +1,13 @@
-import {ICityDailyWeather} from '../daily-weather.model';
+import { ICityDailyWeather } from '../daily-weather.model';
 
 export const dailyWeatherStateName = 'daily-weather-module';
 
 export interface IDailyWeatherModuleState {
-	dailyWeather: ICityDailyWeather;
-	dailyWeatherLoader: boolean;
+  dailyWeather: ICityDailyWeather;
+  dailyWeatherLoader: boolean;
 }
 
 export const initialDailyWeatherModuleState: IDailyWeatherModuleState = {
-	dailyWeather      : null,
-	dailyWeatherLoader: false
+  dailyWeather: null,
+  dailyWeatherLoader: false,
 };

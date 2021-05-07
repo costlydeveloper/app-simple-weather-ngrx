@@ -1,3 +1,6 @@
 <div [@fadeAnimation]="getRouterOutletState(outlet)">
-  <router-outlet #outlet="outlet" (activate)="onRouterOutletActivate($event)"></router-outlet>
+  <router-outlet
+    #outlet="outlet"
+    (activate)="onRouterOutletActivate($event)"
+  ></router-outlet>
 </div>

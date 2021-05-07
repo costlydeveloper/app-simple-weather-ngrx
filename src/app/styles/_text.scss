@@ -1,13 +1,12 @@
-@import 'variables';
+@import "variables";
 
 h2 {
+  color: #636363;
   margin: 0 0 15px;
   text-align: center;
-  color: #636363;
-  }
-
+}
 
 a {
-  text-decoration: none;
   color: #19aa8d;
-  }
+  text-decoration: none;
+}
