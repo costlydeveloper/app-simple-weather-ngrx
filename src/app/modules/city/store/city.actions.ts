@@ -4,6 +4,7 @@ import { ICity } from '../city.model';
 export const enum CityActionType {
   REQUEST_CITIES = '[CITY MODULE] REQUEST_CITIES',
   RESPOND_CITIES = '[CITY MODULE] RESPOND_CITIES',
+  RESPOND_CITIES_ERROR = '[CITY MODULE] RESPOND_CITIES_ERROR',
 }
 
 export class RequestCityAction implements Action {

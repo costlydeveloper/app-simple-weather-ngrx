@@ -9,7 +9,10 @@
           <h2>Sign in</h2>
           <p class="lead">Weather application.</p>
 
-          <app-login-form [formObjectInput]="user"></app-login-form>
+          <app-login-form
+            [formObjectInput]="user"
+            (formIsValid)="validation($event)"
+          ></app-login-form>
 
           <div class="form-group">
             <button

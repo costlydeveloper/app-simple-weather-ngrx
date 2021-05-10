@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
-import { ToastNotification } from '../../../library/popups/toast';
+import { NotificationsService } from '../../../library/popups/notifications.service';
 import { LoggedUserPermissionsService } from '../../../library/secure-data/logged-user-permissions.service';
-import { LibraryValidation } from '../../../library/validation/vaidation';
 import { IUser, User } from '../../../modules/user/user.model';
 
 @Component({
@@ -12,30 +11,26 @@ import { IUser, User } from '../../../modules/user/user.model';
 })
 export class LoginContainerComponent implements OnInit {
   user: IUser = new User();
-  toastValidationIsReady = true;
-  stringValidation: LibraryValidation.Class.StringValidation = new LibraryValidation.Class.StringValidation();
-  toastNotification = new ToastNotification();
+  formIsValid: boolean = false;
 
   constructor(
-    private loggedUserPermissionService: LoggedUserPermissionsService
+    private loggedUserPermissionService: LoggedUserPermissionsService,
+    private notificationsService: NotificationsService
   ) {}
 
   ngOnInit(): void {
     localStorage.clear();
   }
 
-  validation(): boolean {
-    return (
-      this.stringValidation.email(this.user.email) &&
-      this.stringValidation.password(this.user.password)
-    );
+  validation(_isValid?: boolean): void {
+    this.formIsValid = _isValid;
   }
 
   onSubmit(): void {
-    if (this.validation()) {
+    if (this.formIsValid) {
       this.loggedUserPermissionService.setLoggedUser(this.user);
     } else {
-      this.toastNotification.forceSingleToast(
+      this.notificationsService.forceSingleToast(
         'Warning!',
         'Form is not valid!',
         DialogLayoutDisplay.WARNING

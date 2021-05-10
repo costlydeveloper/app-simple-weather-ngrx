@@ -4,6 +4,7 @@ import { ICityWeatherAPIResponse } from '../cites-weather.model';
 export const enum CityWeatherActionType {
   REQUEST_CITIES_WEATHER = '[CITY_WEATHER MODULE] REQUEST_CITIES_WEATHER',
   RESPOND_CITIES_WEATHER = '[CITY_WEATHER MODULE] RESPOND_CITIES_WEATHER',
+  RESPOND_CITIES_WEATHER_ERROR = '[CITY_WEATHER MODULE] RESPOND_CITIES_WEATHER_ERROR',
 }
 
 export class RequestCitiesWeatherAction implements Action {

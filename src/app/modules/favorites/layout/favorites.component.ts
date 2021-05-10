@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { ToastNotification } from '../../../library/popups/toast';
+import { NotificationsService } from '../../../library/popups/notifications.service';
 import { ICityWeather } from '../../city-weather/cites-weather.model';
 import { RequestCitiesWeatherAction } from '../../city-weather/store/cites-weather.actions';
 import { selectCityWeather } from '../../city-weather/store/cites-weather.selector';
@@ -23,9 +23,9 @@ import { selectFavorites } from '../../favorites/store/favorites.selector';
               [cityWeatherItem]="cityWeather"
             ></app-favorite-item>
             <!--	<app-city-weather-item
-                      [isFavorite]="(favorites$ | async).cityIDs.indexOf(cityWeather.id) > -1"
-                      [cityWeatherItem]="cityWeather"
-                  ></app-city-weather-item>-->
+                        [isFavorite]="(favorites$ | async).cityIDs.indexOf(cityWeather.id) > -1"
+                        [cityWeatherItem]="cityWeather"
+                    ></app-city-weather-item>-->
           </div>
         </ng-container>
       </ng-template>
@@ -36,23 +36,26 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   citiesWeather$: Observable<ICityWeather[]>;
   favorites$: Observable<IFavorites>;
   loader$: Observable<boolean>;
-  subscriptions: Subscription[] = [];
-  toastNotification = new ToastNotification();
+  #subscriptions: Subscription = new Subscription();
 
-  constructor(private store: Store<any>, private router: Router) {}
+  constructor(
+    private notificationsService: NotificationsService,
+    private store: Store<any>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.citiesWeather$ = this.store.pipe(select(selectCityWeather));
     this.favorites$ = this.store.pipe(select(selectFavorites));
     this.loader$ = this.store.pipe(select(selectCitesLoader));
 
-    this.subscriptions.push(
+    this.#subscriptions.add(
       this.citiesWeather$.subscribe((val) => {
         // console.log('citiesWeather$ ', val);
       })
     );
 
-    this.subscriptions.push(
+    this.#subscriptions.add(
       this.favorites$.subscribe((favorites) => {
         // console.log('favorites$', favorites);
         let string = '';
@@ -65,7 +68,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
         if (string) {
           this.store.dispatch(new RequestCitiesWeatherAction({ ids: string }));
         } else {
-          this.toastNotification.forceSingleToast(
+          this.notificationsService.evokeToast(
             'Notice!',
             'There are no favorites!',
             DialogLayoutDisplay.INFO
@@ -76,6 +79,6 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.#subscriptions.unsubscribe();
   }
 }

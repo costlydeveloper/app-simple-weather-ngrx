@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NgxAwesomePopupModule,
   ToastNotificationConfigModule,
+  ToastUserViewTypeEnum,
 } from '@costlydeveloper/ngx-awesome-popup';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer } from '@ngrx/router-store';
@@ -36,13 +37,18 @@ import { WeatherPageComponent } from './pages/weather-page/weather-page.componen
   imports: [
     BrowserModule,
     CommonModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     PagesModule,
     FormsModule,
     NgxAwesomePopupModule.forRoot(),
-    ToastNotificationConfigModule.forRoot(),
+    ToastNotificationConfigModule.forRoot({
+      ToastCoreConfig: {
+        ToastUserViewType: ToastUserViewTypeEnum.SIMPLE,
+      },
+    }),
     StoreModule.forRoot(
       {
         routerReducer,

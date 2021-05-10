@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ICityWeather } from '../../../city-weather/cites-weather.model';
 import { RemoveFavoriteAction } from '../../store/favorites.actions';
@@ -8,12 +8,10 @@ import { RemoveFavoriteAction } from '../../store/favorites.actions';
   templateUrl: './favorite-item.component.html',
   styleUrls: ['./favorite-item.component.scss'],
 })
-export class FavoriteItemComponent implements OnInit {
+export class FavoriteItemComponent {
   @Input() cityWeatherItem: ICityWeather;
 
   constructor(private store: Store<any>) {}
-
-  ngOnInit(): void {}
 
   removeFavorite(_favoriteID) {
     this.store.dispatch(new RemoveFavoriteAction(_favoriteID));

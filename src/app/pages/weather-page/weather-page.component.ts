@@ -25,7 +25,7 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
   cityParam: string;
   dayParam: string;
   city: ICity;
-  subscriptions: Subscription[] = [];
+  #subscriptions: Subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private store: Store<any>) {}
 
@@ -37,12 +37,12 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
     );
     this.citiesDailyWeather$ = this.store.pipe(select(selectDailyWeather));
 
-    this.subscriptions.push(
+    this.#subscriptions.add(
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.cityParam = params.get('city-name');
         this.dayParam = params.get('day');
 
-        this.subscriptions.push(
+        this.#subscriptions.add(
           this.cities$.subscribe((items) => {
             this.city = items.find((item) => {
               return item.name.toLowerCase() === this.cityParam.toLowerCase();
@@ -60,6 +60,6 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.#subscriptions.unsubscribe();
   }
 }

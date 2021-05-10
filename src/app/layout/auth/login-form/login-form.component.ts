@@ -1,13 +1,15 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
+  EventEmitter,
   Input,
   OnDestroy,
-  ViewChild,
+  OnInit,
+  Output,
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { filter, tap } from 'rxjs/operators';
+import { passwordRegex } from '../../../config';
 import { IUser, User } from '../../../modules/user/user.model';
 
 @Component({
@@ -15,26 +17,45 @@ import { IUser, User } from '../../../modules/user/user.model';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnDestroy, AfterViewInit {
-  @ViewChild('form', { static: true }) ngForm!: NgForm;
-
-  @ViewChild('formNative', { static: true }) formNative!: ElementRef;
-  // @Output() formObjectOutput: EventEmitter<IUser> = new EventEmitter<IUser>();
+export class LoginFormComponent implements OnDestroy, OnInit {
   @Input() formObjectInput: IUser = new User();
+  @Output() formIsValid: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  subscriptions: Subscription[] = [];
+  loginForm: FormGroup;
 
-  constructor() {}
+  #subscriptions: Subscription = new Subscription();
 
-  ngAfterViewInit() {
-    /*setTimeout(()=>{
-      this.subscriptions.push(this.ngForm.form.valueChanges.subscribe(val => {
-         this.formObjectOutput.emit(this.formObjectInput);
-      }));
-    }, 0);*/
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      username: new FormControl(this.formObjectInput.email, [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl(this.formObjectInput.password, [
+        Validators.required,
+        Validators.pattern(passwordRegex),
+      ]),
+    });
+
+    this.#subscriptions.add(
+      this.loginForm.statusChanges
+        .pipe(
+          tap((item) => {
+            this.formIsValid.emit(this.loginForm.valid);
+            return item;
+          })
+        )
+        .pipe(filter(() => this.loginForm.valid))
+        .subscribe(() => this.onFormValid())
+    );
+  }
+
+  onFormValid(): void {
+    this.formObjectInput.email = this.loginForm.value.email;
+    this.formObjectInput.password = this.loginForm.value.username;
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach((s) => s.unsubscribe());
+    this.#subscriptions.unsubscribe();
   }
 }

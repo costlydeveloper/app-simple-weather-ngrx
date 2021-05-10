@@ -1,4 +1,4 @@
-import { City, ICity } from "../city/city.model";
+import { City, ICity } from '../city/city.model';
 
 //Interface
 

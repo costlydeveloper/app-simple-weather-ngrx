@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { NotificationsService } from '../../../library/popups/notifications.service';
 import { ICityWeatherAPIResponse } from '../cites-weather.model';
 import { CitesWeatherService } from '../cites-weather.service';
 import {
@@ -23,7 +25,18 @@ export class CitesWeatherEffects {
       return this.cityService.getCitiesWeather(ids).pipe(
         map((citiesWeatherResponse: ICityWeatherAPIResponse) => {
           return new RespondCitiesWeatherAction({ citiesWeatherResponse });
-        })
+        }),
+        catchError(() =>
+          of({ type: CityWeatherActionType.RESPOND_CITIES_WEATHER_ERROR }).pipe(
+            tap((resp) => {
+              this.notificationsService.evokeToast(
+                'Error',
+                'API error.',
+                DialogLayoutDisplay.DANGER
+              );
+            })
+          )
+        )
       );
     })
   );
@@ -64,6 +77,7 @@ export class CitesWeatherEffects {
   );*/
 
   constructor(
+    private notificationsService: NotificationsService,
     private readonly actions$: Actions,
     private readonly cityService: CitesWeatherService
   ) {}

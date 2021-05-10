@@ -18,7 +18,7 @@ import {
 export class DailyWeatherComponent implements OnInit, OnDestroy {
   citiesDailyWeather$: Observable<ICityDailyWeather>;
   citiesDailyWeatherLoader$: Observable<boolean>;
-  subscriptions: Subscription[] = [];
+  #subscriptions: Subscription = new Subscription();
 
   @Input() cityID: number;
   @Input() dayParam: string;
@@ -31,7 +31,7 @@ export class DailyWeatherComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscriptions.push(
+    this.#subscriptions.add(
       this.citiesDailyWeather$.subscribe((val) => {
         // console.log('val', val);
       })
@@ -39,6 +39,6 @@ export class DailyWeatherComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.#subscriptions.unsubscribe();
   }
 }

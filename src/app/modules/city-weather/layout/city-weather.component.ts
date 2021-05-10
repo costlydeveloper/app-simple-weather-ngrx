@@ -34,12 +34,12 @@ export class CitiesWeatherComponent implements OnInit, OnDestroy {
   citiesWeather$: Observable<ICityWeather[]>;
   favorites$: Observable<IFavorites>;
   loader$: Observable<boolean>;
-  subscriptions: Subscription[] = [];
+  #subscriptions: Subscription = new Subscription();
 
   constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new RequestCitiesWeatherAction({ ids: '' }));
+    // this.store.dispatch(new RequestCitiesWeatherAction({ ids: '' }));
     this.citiesWeather$ = this.store.pipe(select(selectCityWeather));
     this.favorites$ = this.store.pipe(select(selectFavorites));
     this.loader$ = this.store.pipe(select(selectCitesLoader));
@@ -53,13 +53,13 @@ export class CitiesWeatherComponent implements OnInit, OnDestroy {
         //DiffUtil list1 and list2 and return the filtered list
       }
     );*/
-    this.subscriptions.push(
+    this.#subscriptions.add(
       this.citiesWeather$.subscribe((val) => {
         // console.log('citiesWeather$ ', val);
       })
     );
 
-    this.subscriptions.push(
+    this.#subscriptions.add(
       this.favorites$.subscribe((val) => {
         // console.log('favorites$', val);
       })
@@ -67,8 +67,6 @@ export class CitiesWeatherComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach((sub) => sub.unsubscribe());
+    this.#subscriptions.unsubscribe();
   }
 }
-
-interface MergedCitesWeatherFavorites extends ICityWeather {}

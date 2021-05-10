@@ -1,6 +1,11 @@
-.btn,
-.btn:active {
+@import "src/app/styles/variables";
+
+.btn {
   min-width: 140px;
+
+  &:active {
+    min-width: 140px;
+  }
 }
 
 .fa {
@@ -8,7 +13,17 @@
   position: relative;
   top: 8px;
 }
-
-.input-group-addon {
-  background: #e8f0fe;
+.input-ico {
+  i {
+    position: absolute;
+    z-index: 4;
+    left: 8px;
+    top: 8px;
+  }
+  input {
+    padding-left: 40px;
+  }
+}
+input.ng-invalid {
+  background-color: lighten($danger, 25);
 }
