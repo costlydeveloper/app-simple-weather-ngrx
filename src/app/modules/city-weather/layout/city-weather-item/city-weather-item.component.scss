@@ -1,20 +1,54 @@
 @import "src/app/styles/variables";
-.inline-list-item {
-  list-style: none;
-  text-align: center;
-}
 
-.first-capital::first-letter {
-  text-transform: capitalize;
-}
+.card {
+  border: transparent;
+  background: lighten($gray-100, 1);
+  border-radius: 4px;
 
-.p-checkbox-label {
-  position: relative;
-  top: -4px;
-}
+  .inline-list-item {
+    list-style: none;
+    text-align: center;
+  }
 
-.form-check-block {
-  border-top: 1px solid $gray-600;
-  margin-top: 10px;
-  padding-top: 10px;
+  .first-capital::first-letter {
+    text-transform: capitalize;
+  }
+
+  .form-check-block {
+    border-top: 1px solid $gray-200;
+    display: flex;
+    background: $gray-100;
+    margin: 7px -16px -16px -16px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 0 0 4px 4px;
+
+    .p-checkbox-label {
+      position: relative;
+      top: 7px;
+      left: 7px;
+    }
+
+    .star {
+      visibility: hidden;
+      font-size: 20px;
+      cursor: pointer;
+      color: $yellow;
+      text-shadow: 0 0 2px $red;
+
+      &:before {
+        content: "\2606";
+        position: absolute;
+        visibility: visible;
+        color: $gray-600;
+        text-shadow: none;
+      }
+      &:checked:before {
+        content: "\2605";
+        position: absolute;
+        color: $yellow;
+        text-shadow: 0 0 2px $red;
+      }
+    }
+  }
 }

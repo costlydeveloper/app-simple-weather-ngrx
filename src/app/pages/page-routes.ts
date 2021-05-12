@@ -23,6 +23,7 @@ export const PAGE_ROUTES: Routes = [
   {
     path: '',
     component: AppLayoutFrameComponent,
+    canActivate: [AppGuard],
     children: [
       { path: 'weather', redirectTo: 'weather/', pathMatch: 'full' },
       {
@@ -31,7 +32,6 @@ export const PAGE_ROUTES: Routes = [
           import('./weather-page/weather-page.module').then(
             (mod) => mod.WeatherPageModule
           ),
-        canActivate: [AppGuard],
       },
       {
         path: 'weather/:city-name',
@@ -39,7 +39,6 @@ export const PAGE_ROUTES: Routes = [
           import('./weather-page/weather-page.module').then(
             (mod) => mod.WeatherPageModule
           ),
-        canActivate: [AppGuard],
       },
       { path: 'favorites', redirectTo: 'favorites/', pathMatch: 'full' },
       {
@@ -48,7 +47,6 @@ export const PAGE_ROUTES: Routes = [
           import('./favorites-page/favorites-page.module').then(
             (mod) => mod.FavoritesPageModule
           ),
-        canActivate: [AppGuard],
       },
       {
         path: 'favorites/:city-name',
@@ -56,7 +54,6 @@ export const PAGE_ROUTES: Routes = [
           import('./favorites-page/favorites-page.module').then(
             (mod) => mod.FavoritesPageModule
           ),
-        canActivate: [AppGuard],
       },
     ],
   },

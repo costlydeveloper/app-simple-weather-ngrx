@@ -9,7 +9,7 @@ import { ICity } from '../../city.model';
 })
 export class CityMultiselectComponent {
   @Input() cities$: Observable<ICity[]>;
-  @Output() selectedCities = new EventEmitter<ICity[]>();
+  @Output() selectedCities: EventEmitter<ICity[]> = new EventEmitter<ICity[]>();
   selected: ICity[] = [];
 
   submit(): void {

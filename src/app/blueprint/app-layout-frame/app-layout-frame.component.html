@@ -1,6 +1,9 @@
-<div [@content]="contentState">
-  <app-header></app-header>
-  <div class="container card">
-    <router-outlet></router-outlet>
-  </div>
+<app-header></app-header>
+<div class="container card">
+  <main [@fadeAnimation]="getRouterOutletState(outlet)">
+    <router-outlet
+      #outlet="outlet"
+      (activate)="onRouterOutletActivate($event)"
+    ></router-outlet>
+  </main>
 </div>

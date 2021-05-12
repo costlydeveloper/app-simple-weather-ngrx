@@ -20,9 +20,7 @@ export class CityEffects {
     ofType<RequestCityAction>(CityActionType.REQUEST_CITIES),
     switchMap((action) => {
       return this.cityService.getCities().pipe(
-        map((response: ICity[]) => {
-          return new RespondCityAction({ cities: response });
-        }),
+        map((response: ICity[]) => new RespondCityAction({ cities: response })),
         catchError(() =>
           of({ type: CityActionType.RESPOND_CITIES_ERROR }).pipe(
             tap((resp) => {

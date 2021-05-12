@@ -25,6 +25,8 @@ import { DailyWeatherModule } from './modules/daily-wether/daily-weather.module'
 import { FavoritesModule } from './modules/favorites/favorites.module';
 import { PagesModule } from './pages/pages.module';
 import { WeatherPageComponent } from './pages/weather-page/weather-page.component';
+import { LoaderComponent } from './layout/loader/loader.component';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { WeatherPageComponent } from './pages/weather-page/weather-page.componen
     HttpClientModule,
     PagesModule,
     FormsModule,
+    SharedModule,
     NgxAwesomePopupModule.forRoot(),
     ToastNotificationConfigModule.forRoot({
       ToastCoreConfig: {

@@ -13,6 +13,7 @@
   position: relative;
   top: 8px;
 }
+
 .input-ico {
   i {
     position: absolute;
@@ -20,10 +21,12 @@
     left: 8px;
     top: 8px;
   }
+
   input {
     padding-left: 40px;
   }
 }
+
 input.ng-invalid {
-  background-color: lighten($danger, 25);
+  background-color: lighten($red, 25);
 }

@@ -21,19 +21,8 @@ export class LoggedUserPermissionsService {
   }
 
   async haveAccess(): Promise<boolean> {
-    let securityLogoutCount = 0;
-
-    while (this.xToken === null) {
-      securityLogoutCount++;
-      if (securityLogoutCount > 30) {
-        // LOGOUT id data is missing
-        this.logout();
-        return false;
-      } else {
-        await this.__delay__(500);
-      }
-    }
-    return true;
+    const isUserLogged: boolean = !!this.getLoggedUserToken();
+    return Promise.resolve(isUserLogged);
   }
 
   public logout(): void {
@@ -49,13 +38,5 @@ export class LoggedUserPermissionsService {
 
   getLoggedUserToken(): string {
     return localStorage.getItem('X-token');
-  }
-
-  private __delay__(timer: number = 2000): Promise<void> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, timer);
-    });
   }
 }

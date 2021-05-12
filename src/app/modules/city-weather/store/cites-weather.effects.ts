@@ -23,9 +23,10 @@ export class CitesWeatherEffects {
     switchMap((action: RequestCitiesWeatherAction) => {
       const { ids } = action.payload;
       return this.cityService.getCitiesWeather(ids).pipe(
-        map((citiesWeatherResponse: ICityWeatherAPIResponse) => {
-          return new RespondCitiesWeatherAction({ citiesWeatherResponse });
-        }),
+        map(
+          (citiesWeatherResponse: ICityWeatherAPIResponse) =>
+            new RespondCitiesWeatherAction({ citiesWeatherResponse })
+        ),
         catchError(() =>
           of({ type: CityWeatherActionType.RESPOND_CITIES_WEATHER_ERROR }).pipe(
             tap((resp) => {

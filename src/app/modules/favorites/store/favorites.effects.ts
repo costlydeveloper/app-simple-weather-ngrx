@@ -24,9 +24,10 @@ export class FavoritesEffects {
     ofType<RequestFavoritesAction>(FavoritesActionTypes.REQUEST_FAVORITES),
     switchMap((action) => {
       return this.favoritesService.getFavorites().pipe(
-        map((response: IFavorites) => {
-          return new RespondFavoritesAction({ favorites: response });
-        }),
+        map(
+          (response: IFavorites) =>
+            new RespondFavoritesAction({ favorites: response })
+        ),
         catchError(() =>
           of({ type: FavoritesActionTypes.RESPONSE_FAVORITES_ERROR }).pipe(
             tap((resp) => {
@@ -47,9 +48,7 @@ export class FavoritesEffects {
     switchMap((action) => {
       const favorite: number = (action as AddFavoriteAction).payload;
       return this.favoritesService.addFavorite(favorite).pipe(
-        map((response: number) => {
-          return new AddFavoriteResponseAction(response);
-        }),
+        map((response: number) => new AddFavoriteResponseAction(response)),
         catchError(() =>
           of({ type: FavoritesActionTypes.ADD_FAVORITE_RESPONSE_ERROR }).pipe(
             tap((resp) => {
@@ -70,9 +69,7 @@ export class FavoritesEffects {
     switchMap((action) => {
       const favorite: number = (action as RemoveFavoriteAction).payload;
       return this.favoritesService.removeFavorite(favorite).pipe(
-        map((response: number) => {
-          return new RemoveFavoriteResponseAction(response);
-        }),
+        map((response: number) => new RemoveFavoriteResponseAction(response)),
         catchError(() =>
           of({
             type: FavoritesActionTypes.REMOVE_FAVORITE_RESPONSE_ERROR,

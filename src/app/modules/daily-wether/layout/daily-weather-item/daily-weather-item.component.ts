@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import * as moment from 'moment';
 import { ICityDailyWeather } from '../../daily-weather.model';
+import { DisplayWeatherItem, OneDayWeather } from './interface';
 
 @Component({
   selector: 'app-daily-weather-item',
@@ -47,17 +48,4 @@ export class DailyWeatherItemComponent implements OnInit, OnChanges {
         });
     }
   }
-}
-
-interface DisplayWeatherItem {
-  dayName: string;
-  iconURL: string;
-  tempMax: string;
-  tempMin: string;
-}
-
-interface OneDayWeather {
-  hour: string;
-  iconURL: string;
-  temp: string;
 }

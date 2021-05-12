@@ -5,22 +5,27 @@
   <div
     class="card col-md-2 pointer"
     *ngFor="let weather of weatherList"
-    routerLink="/weather/{{ cityDailyWeather?.city.name.toLowerCase() }}/{{
+    [routerLink]="
+      '/weather/' +
+      cityDailyWeather?.city.name.toLowerCase() +
+      '/' +
       weather.dayName
-    }}"
+    "
   >
     <div class="card-body">
       <div class="row text-center">
         <div class="col-md-12">
-          <p class="card-text first-capital">{{ weather.dayName }}</p>
+          <p class="card-text first-capital">{{ weather?.dayName || "-" }}</p>
         </div>
         <div class="col-md-12">
-          <p class="card-text"><img src="{{ weather.iconURL }}" alt="..." /></p>
+          <p class="card-text">
+            <img src="{{ weather?.iconURL || '' }}" alt="icon" />
+          </p>
         </div>
         <div class="col-md-12">
           <div class="tmp-wrap">
-            <span class="tmp-max">{{ weather.tempMax }}</span>
-            <span class="tmp-min">{{ weather.tempMin }}</span>
+            <span class="tmp-max">{{ weather?.tempMax || "-" }}</span>
+            <span class="tmp-min">{{ weather?.tempMin || "-" }}</span>
           </div>
         </div>
       </div>
@@ -36,14 +41,16 @@
     <div class="card-body">
       <div class="row text-center">
         <div class="col-md-12">
-          <p class="card-text first-capital">{{ weather.hour }}</p>
+          <p class="card-text first-capital">{{ weather?.hour || "-" }}</p>
         </div>
         <div class="col-md-12">
-          <p class="card-text"><img src="{{ weather.iconURL }}" alt="..." /></p>
+          <p class="card-text">
+            <img src="{{ weather?.iconURL || '-' }}" alt="icon" />
+          </p>
         </div>
         <div class="col-md-12">
           <div class="tmp-wrap">
-            <span class="tmp-max">{{ weather.temp }}</span>
+            <span class="tmp-max">{{ weather?.temp || "-" }}</span>
           </div>
         </div>
       </div>

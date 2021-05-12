@@ -1,5 +1,5 @@
 @import "pre-import";
-
+@import "node_modules/bootstrap";
 body {
   background-image: url("../../assets/images/pexels-eberhard-grossgasteiger-1366922.jpg");
   background-position: top;
@@ -57,4 +57,18 @@ body {
 
 .form-container {
   padding: 0 10px;
+}
+
+.center-text-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  pointer-events: none;
 }

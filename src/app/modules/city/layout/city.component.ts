@@ -11,10 +11,7 @@ import { selectCitesLoader, selectCity } from '../store/city.selector';
 
 @Component({
   selector: 'app-city',
-  template: ` <app-city-multiselect
-    [cities$]="cities$"
-    (selectedCities)="selectedCitiesTrigger($event)"
-  ></app-city-multiselect>`,
+  templateUrl: './city.component.html',
 })
 export class CityComponent implements OnInit, OnDestroy {
   selectedCities: ICity[] = [];

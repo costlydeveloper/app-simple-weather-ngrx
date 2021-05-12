@@ -6,6 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DataViewModule } from 'primeng/dataview';
+import { SharedModule } from '../../shared.module';
 import { CityWeatherItemComponent } from './layout/city-weather-item/city-weather-item.component';
 import { CitiesWeatherComponent } from './layout/city-weather.component';
 import { CitesWeatherEffects } from './store/cites-weather.effects';
@@ -23,6 +24,7 @@ import { cityWeatherStateName } from './store/cites-weather.state';
     EffectsModule.forFeature([CitesWeatherEffects]),
     RouterModule,
     FormsModule,
+    SharedModule,
   ],
 })
 export class CitesWeatherModule {}

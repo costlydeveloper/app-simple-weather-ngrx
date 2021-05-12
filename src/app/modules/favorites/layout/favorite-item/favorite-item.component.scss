@@ -1,19 +1,26 @@
-.inline-list-item {
-  list-style: none;
-  text-align: center;
-}
+@import "src/app/styles/variables";
 
-.first-capital::first-letter {
-  text-transform: capitalize;
-}
+.card {
+  border: transparent;
+  background: lighten($gray-100, 1);
+  border-radius: 4px;
 
-.p-checkbox-label {
-  position: relative;
-  top: -4px;
-}
+  .inline-list-item {
+    list-style: none;
+    text-align: center;
+  }
 
-.form-check-block {
-  border-top: 1px solid #929292;
-  margin-top: 10px;
-  padding-top: 10px;
+  .first-capital::first-letter {
+    text-transform: capitalize;
+  }
+
+  .form-check-block {
+    border-top: 1px solid $gray-200;
+    display: flex;
+    background: $gray-100;
+    margin: 7px -16px -16px -16px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 0 0 4px 4px;
+  }
 }

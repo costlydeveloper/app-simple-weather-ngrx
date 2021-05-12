@@ -24,9 +24,10 @@ export class DailyWeatherEffects {
       const { id } = action.payload;
 
       return this.dailyWeatherService.getDailyCityWeather(id).pipe(
-        map((dailyWeatherResponse: IDailyWeatherAPIResponse) => {
-          return new RespondDailyWeatherAction({ dailyWeatherResponse });
-        }),
+        map(
+          (dailyWeatherResponse: IDailyWeatherAPIResponse) =>
+            new RespondDailyWeatherAction({ dailyWeatherResponse })
+        ),
         catchError(() =>
           of({
             type: DailyWeatherActionType.RESPONSE_DAILY_WEATHER_ERROR,

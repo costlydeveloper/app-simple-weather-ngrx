@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { content } from '../../library/animation/loder.animations';
+import { fadeAnimation } from '../../library/animation/fade-in-out.animation';
 
 @Component({
   selector: 'app-app-layout-frame',
   templateUrl: './app-layout-frame.component.html',
   styleUrls: ['./app-layout-frame.component.scss'],
-  animations: [content],
+  animations: [fadeAnimation],
 })
 export class AppLayoutFrameComponent {
   contentState: string = 'active';
@@ -14,4 +14,6 @@ export class AppLayoutFrameComponent {
   public getRouterOutletState(outlet: RouterOutlet): any {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
+
+  public onRouterOutletActivate(event: any): void {}
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ICityWeather } from '../../../city-weather/cites-weather.model';
 import { RemoveFavoriteAction } from '../../store/favorites.actions';
@@ -10,10 +10,11 @@ import { RemoveFavoriteAction } from '../../store/favorites.actions';
 })
 export class FavoriteItemComponent {
   @Input() cityWeatherItem: ICityWeather;
+  @Output() removeFavoriteID: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(private store: Store<any>) {}
 
-  removeFavorite(_favoriteID) {
-    this.store.dispatch(new RemoveFavoriteAction(_favoriteID));
+  removeFavorite(_favoriteID: number): void {
+    this.removeFavoriteID.emit(_favoriteID);
   }
 }

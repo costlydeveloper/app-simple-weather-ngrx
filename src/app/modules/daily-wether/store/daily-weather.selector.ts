@@ -14,16 +14,12 @@ export const selectDailyWeather: Selector<
   ICityDailyWeather
 > = createSelector(
   selectDailyCityWeatherModule,
-  (state: IDailyWeatherModuleState) => {
-    return state.dailyWeather;
-  }
+  (state: IDailyWeatherModuleState) => state.dailyWeather
 );
 export const selectDailyWeatherLoader: Selector<
   object,
   boolean
 > = createSelector(
   selectDailyCityWeatherModule,
-  (state: IDailyWeatherModuleState) => {
-    return state.dailyWeatherLoader;
-  }
+  (state: IDailyWeatherModuleState) => state.dailyWeatherLoader
 );
