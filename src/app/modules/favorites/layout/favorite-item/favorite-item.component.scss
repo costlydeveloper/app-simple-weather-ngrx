@@ -1,10 +1,6 @@
 @import "src/app/styles/variables";
 
 .card {
-  border: transparent;
-  background: $surface-a;
-  border-radius: 4px;
-
   .inline-list-item {
     list-style: none;
     text-align: center;
@@ -15,12 +11,12 @@
   }
 
   .form-check-block {
+    background: $surface-b;
+    border-radius: 0 0 4px 4px;
     border-top: 1px solid $gray-200;
     display: flex;
-    background: $surface-b;
-    margin: 7px -16px -16px -16px;
     height: 50px;
+    margin: 7px -16px -16px -16px;
     padding: 10px;
-    border-radius: 0 0 4px 4px;
   }
 }

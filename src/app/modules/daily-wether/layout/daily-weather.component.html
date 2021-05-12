@@ -1,0 +1,9 @@
+<div class="row m-0">
+  <div class="col-md-12 p-2">
+    <app-daily-weather-item
+      *ngIf="!(citiesDailyWeatherLoader$ | async)"
+      [cityDailyWeather]="citiesDailyWeather$ | async"
+      [dayParam]="dayParam"
+    ></app-daily-weather-item>
+  </div>
+</div>

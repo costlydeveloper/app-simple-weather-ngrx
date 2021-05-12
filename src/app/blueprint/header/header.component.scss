@@ -2,8 +2,8 @@
 
 .top-nav {
   background-color: $gray-100;
-  overflow: hidden;
   box-shadow: 0 0 2px 0 $gray-400;
+  overflow: hidden;
 
   .container {
     padding: 0 !important;
@@ -33,7 +33,7 @@
         color: $primary-color;
       }
 
-      &:active {
+      &.active {
         color: $secondary-color;
       }
     }

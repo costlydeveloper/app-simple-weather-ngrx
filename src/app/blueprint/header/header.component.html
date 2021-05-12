@@ -6,8 +6,10 @@
     <a
       *ngFor="let item of menuItems"
       [routerLink]="item.route"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
+      [routerLinkActiveOptions]="{ exact: false }"
+      [routerLinkActive]=""
+      [ngClass]="rla.isActive ? 'active' : ''"
+      #rla="routerLinkActive"
       >{{ item.name }}</a
     >
     <a class="float-end" routerLink="/">Logout</a>

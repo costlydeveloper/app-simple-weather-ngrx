@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { ICityDailyWeather } from '../../daily-weather.model';
 import { DisplayWeatherItem, OneDayWeather } from './interface';
@@ -19,6 +20,9 @@ export class DailyWeatherItemComponent implements OnInit, OnChanges {
   @Input() dayParam: string;
   weatherList: DisplayWeatherItem[];
   specificDayWeatherList: OneDayWeather[];
+  moduleRoute: string = this.router.url.split('/')[1];
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.weatherList = this.cityDailyWeather.list
@@ -35,7 +39,7 @@ export class DailyWeatherItemComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['dayParam'] && this.dayParam) {
+    if (changes['dayParam'].currentValue && this.dayParam) {
       this.specificDayWeatherList = this.cityDailyWeather.list
         .filter((item) => moment(item.dt_txt).format('ddd') === this.dayParam)
         .map((item) => {

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ICityWeather } from '../../../city-weather/cites-weather.model';
-import { RemoveFavoriteAction } from '../../store/favorites.actions';
 
 @Component({
   selector: 'app-favorite-item',

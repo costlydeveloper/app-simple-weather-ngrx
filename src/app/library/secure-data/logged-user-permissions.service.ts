@@ -45,6 +45,7 @@ export class LoggedUserPermissionsService {
       return null;
     }
   }
+
   getLoggedUserEmail(): string {
     const XToken = localStorage.getItem('X-token');
     if (XToken) {

@@ -31,6 +31,7 @@ export class NotificationsService {
         });
     }
   }
+
   evokeToast(
     _title: string,
     _message: string,

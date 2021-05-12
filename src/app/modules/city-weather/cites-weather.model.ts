@@ -64,6 +64,7 @@ export class CityWeatherAPIResponse {
   cnt: number = null;
   list: ICityWeather[] = [];
 }
+
 export class CityWeather extends City implements ICityWeather {
   coord: ICoordinates = new Coordinates();
   sys: ISys = new Sys();

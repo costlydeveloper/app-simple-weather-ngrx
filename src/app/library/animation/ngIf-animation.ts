@@ -1,10 +1,4 @@
-import {
-  animate,
-  query,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 export const inOutAnimation = trigger('inOutAnimation', [
   /*  transition(':enter', [

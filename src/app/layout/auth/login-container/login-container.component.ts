@@ -29,6 +29,7 @@ export class LoginContainerComponent implements OnInit {
   onFormChange(_formUser: IUser): void {
     this.user = _formUser;
   }
+
   onSubmit(): void {
     if (this.formIsValid) {
       this.loggedUserPermissionService.setLoggedUser(this.user);

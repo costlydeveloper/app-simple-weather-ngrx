@@ -1,4 +1,5 @@
 import { Action, ActionReducer, MetaReducer } from '@ngrx/store';
+import { environment } from '../environments/environment';
 
 export function debugMetaReducer(
   reducer: ActionReducer<object>
@@ -26,18 +27,20 @@ export function debugMetaReducer(
       logData.prefixText = `${actionTypeSplit[0]}`;
     }
 
-    console.groupCollapsed(
-      `%c update %c${logData.prefixText}%c %c${logData.suffixText}`,
-      `color: #961515`,
-      `${logData.prefixColor}`,
-      ``,
-      `${logData.suffixColor}`
-    );
+    if (environment.ngrxLog) {
+      console.groupCollapsed(
+        `%c update %c${logData.prefixText}%c %c${logData.suffixText}`,
+        `color: #961515`,
+        `${logData.prefixColor}`,
+        ``,
+        `${logData.suffixColor}`
+      );
 
-    console.log('Old state: ', oldState);
-    console.log('Action: ', action);
-    console.log('New state: ', newState);
-    console.groupEnd();
+      console.log('Old state: ', oldState);
+      console.log('Action: ', action);
+      console.log('New state: ', newState);
+      console.groupEnd();
+    }
 
     return newState;
   };

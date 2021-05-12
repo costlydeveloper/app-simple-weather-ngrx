@@ -42,7 +42,7 @@ export const PAGE_ROUTES: Routes = [
       },
       { path: 'favorites', redirectTo: 'favorites/', pathMatch: 'full' },
       {
-        path: 'favorites/:city-name/:day,',
+        path: 'favorites/:city-name/:day',
         loadChildren: () =>
           import('./favorites-page/favorites-page.module').then(
             (mod) => mod.FavoritesPageModule

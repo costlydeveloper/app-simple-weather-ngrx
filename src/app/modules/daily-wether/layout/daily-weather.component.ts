@@ -9,19 +9,14 @@ import {
 
 @Component({
   selector: 'app-daily-weather',
-  template: ` <app-daily-weather-item
-    *ngIf="!(citiesDailyWeatherLoader$ | async)"
-    [cityDailyWeather]="citiesDailyWeather$ | async"
-    [dayParam]="dayParam"
-  ></app-daily-weather-item>`,
+  templateUrl: './daily-weather.component.html',
 })
 export class DailyWeatherComponent implements OnInit, OnDestroy {
   citiesDailyWeather$: Observable<ICityDailyWeather>;
   citiesDailyWeatherLoader$: Observable<boolean>;
-  #subscriptions: Subscription = new Subscription();
-
   @Input() cityID: number;
   @Input() dayParam: string;
+  #subscriptions: Subscription = new Subscription();
 
   constructor(private store: Store<any>) {
     this.citiesDailyWeather$ = this.store.pipe(select(selectDailyWeather));
@@ -31,11 +26,7 @@ export class DailyWeatherComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.#subscriptions.add(
-      this.citiesDailyWeather$.subscribe((val) => {
-        // console.log('val', val);
-      })
-    );
+    this.#subscriptions.add(this.citiesDailyWeather$.subscribe((val) => {}));
   }
 
   ngOnDestroy() {

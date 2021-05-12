@@ -8,15 +8,16 @@
 
 .input-ico {
   i {
-    position: absolute;
-    z-index: 4;
     left: 8px;
+    position: absolute;
     top: 8px;
+    z-index: 4;
   }
 
   input {
-    padding-left: 40px;
     border-radius: 3px !important;
+    padding-left: 40px;
+
     &.ng-invalid {
       background-color: lighten($red, 25);
     }
