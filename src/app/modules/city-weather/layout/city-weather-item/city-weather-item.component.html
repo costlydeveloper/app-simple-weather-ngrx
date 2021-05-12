@@ -5,10 +5,10 @@
       (change)="favoritesFormTrigger(myFavoritesForm.value)"
     >
       <div
-        class="row"
+        class="row m-0"
         routerLink="/weather/{{ cityWeatherItem?.name.toLowerCase() }}"
       >
-        <div class="col-md-12">
+        <div class="col-md-12 p-0">
           <h5 class="card-title">{{ cityWeatherItem?.name }}</h5>
         </div>
         <div class="col-md-6">
@@ -26,7 +26,7 @@
             <li class="inline-list-item">C° {{ cityWeatherItem.main.temp }}</li>
           </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 p-0">
           <p class="card-text first-capital">
             {{ cityWeatherItem.weather[0].description }}
           </p>

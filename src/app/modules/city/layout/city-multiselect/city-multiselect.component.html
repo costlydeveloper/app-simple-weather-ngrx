@@ -1,9 +1,16 @@
 <h5>Select the city</h5>
-<p-multiSelect
-  class="multiselect-cities"
-  [options]="cities$ | async"
-  [(ngModel)]="selected"
-  optionLabel="name"
-  defaultLabel="Select a City"
-></p-multiSelect>
-<button class="btn btn-success submit-city" (click)="submit()">Submit</button>
+<div class="row m-0 p-0">
+  <div class="col m-0 p-0">
+    <p-multiSelect
+      class="multiselect-cities"
+      [options]="cities$ | async"
+      [(ngModel)]="selected"
+      [style]="{ width: '80%' }"
+      optionLabel="name"
+      defaultLabel="Select a City"
+    ></p-multiSelect>
+    <button class="btn btn-primary submit-city" (click)="submit()">
+      Submit
+    </button>
+  </div>
+</div>

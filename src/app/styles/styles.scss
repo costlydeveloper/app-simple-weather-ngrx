@@ -1,9 +1,13 @@
 @import "pre-import";
 @import "node_modules/bootstrap";
+
 body {
-  background-image: url("../../assets/images/pexels-eberhard-grossgasteiger-1366922.jpg");
-  background-position: top;
-  background-size: auto;
+  background: url("../../assets/images/pexels-eberhard-grossgasteiger-1366922.jpg")
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   color: $text-color;
   font-family: "Roboto", sans-serif;
 }

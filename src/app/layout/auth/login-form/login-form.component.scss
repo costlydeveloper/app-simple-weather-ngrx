@@ -1,13 +1,5 @@
 @import "src/app/styles/variables";
 
-.btn {
-  min-width: 140px;
-
-  &:active {
-    min-width: 140px;
-  }
-}
-
 .fa {
   font-size: 21px;
   position: relative;
@@ -24,9 +16,9 @@
 
   input {
     padding-left: 40px;
+    border-radius: 3px !important;
+    &.ng-invalid {
+      background-color: lighten($red, 25);
+    }
   }
-}
-
-input.ng-invalid {
-  background-color: lighten($red, 25);
 }

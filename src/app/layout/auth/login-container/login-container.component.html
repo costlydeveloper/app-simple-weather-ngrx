@@ -12,11 +12,12 @@
           <app-login-form
             [formObjectInput]="user"
             (formIsValid)="validation($event)"
+            (user)="onFormChange($event)"
           ></app-login-form>
 
           <div class="form-group">
             <button
-              class="btn btn-success btn-block"
+              class="btn btn-primary btn-block login-btn"
               type="submit"
               (click)="onSubmit()"
             >

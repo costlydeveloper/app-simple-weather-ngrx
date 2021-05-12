@@ -7,33 +7,40 @@ import { Favorites, IFavorites } from './favorites.model';
   providedIn: 'root',
 })
 export class FavoritesService {
-  key: string = `fav-${this.userService.getLoggedUserToken()?.toLowerCase()}`;
-
   constructor(private userService: LoggedUserPermissionsService) {}
 
   getFavorites(): Observable<IFavorites> {
-    let favorites = JSON.parse(localStorage.getItem(this.key));
+    const key: string = `fav-${this.userService
+      .getLoggedUserEmail()
+      ?.toLowerCase()}`;
+    let favorites = JSON.parse(localStorage.getItem(key));
     if (!favorites) {
       favorites = new Favorites();
-      localStorage.setItem(this.key, JSON.stringify(favorites));
+      localStorage.setItem(key, JSON.stringify(favorites));
     }
     return of(favorites);
   }
 
   addFavorite(_favorite: number): Observable<number> {
-    let favorites: IFavorites = JSON.parse(localStorage.getItem(this.key));
+    const key: string = `fav-${this.userService
+      .getLoggedUserEmail()
+      ?.toLowerCase()}`;
+    let favorites: IFavorites = JSON.parse(localStorage.getItem(key));
     favorites.cityIDs.push(_favorite);
-    localStorage.setItem(this.key, JSON.stringify(favorites));
+    localStorage.setItem(key, JSON.stringify(favorites));
     return of(_favorite);
   }
 
   removeFavorite(_favorite: number): Observable<number> {
-    let favorites: IFavorites = JSON.parse(localStorage.getItem(this.key));
+    const key: string = `fav-${this.userService
+      .getLoggedUserEmail()
+      ?.toLowerCase()}`;
+    let favorites: IFavorites = JSON.parse(localStorage.getItem(key));
 
     const index = favorites.cityIDs.indexOf(_favorite);
     if (index > -1) {
       favorites.cityIDs.splice(index, 1);
-      localStorage.setItem(this.key, JSON.stringify(favorites));
+      localStorage.setItem(key, JSON.stringify(favorites));
       return of(_favorite);
     }
   }

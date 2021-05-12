@@ -7,12 +7,12 @@ import { IUser } from '../../modules/user/user.model';
   providedIn: 'root',
 })
 export class LoggedUserPermissionsService {
-  private xToken: string | null = null;
+  private xToken: string = null;
 
   constructor(private router: Router, private store: Store<any>) {
     if (this.router.url.includes('auth')) {
       this.xToken = null;
-      localStorage.clear();
+      localStorage.removeItem('X-token');
     } else {
       if (!this.xToken) {
         this.xToken = localStorage.getItem('X-token');
@@ -27,7 +27,7 @@ export class LoggedUserPermissionsService {
 
   public logout(): void {
     this.router.navigate(['/']);
-    localStorage.clear();
+    localStorage.removeItem('X-token');
   }
 
   public setLoggedUser(_LoggedUser: IUser): void {
@@ -37,6 +37,21 @@ export class LoggedUserPermissionsService {
   }
 
   getLoggedUserToken(): string {
-    return localStorage.getItem('X-token');
+    const XToken = localStorage.getItem('X-token');
+    if (XToken) {
+      return localStorage.getItem('X-token');
+    } else {
+      this.logout();
+      return null;
+    }
+  }
+  getLoggedUserEmail(): string {
+    const XToken = localStorage.getItem('X-token');
+    if (XToken) {
+      return localStorage.getItem('X-token').slice(0, -10);
+    } else {
+      this.logout();
+      return null;
+    }
   }
 }

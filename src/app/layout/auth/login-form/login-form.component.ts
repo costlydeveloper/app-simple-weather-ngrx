@@ -20,6 +20,7 @@ import { IUser, User } from '../../../modules/user/user.model';
 export class LoginFormComponent implements OnDestroy, OnInit {
   @Input() formObjectInput: IUser = new User();
   @Output() formIsValid: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() user: EventEmitter<IUser> = new EventEmitter<IUser>();
 
   loginForm: FormGroup;
 
@@ -51,8 +52,9 @@ export class LoginFormComponent implements OnDestroy, OnInit {
   }
 
   onFormValid(): void {
-    this.formObjectInput.email = this.loginForm.value.email;
-    this.formObjectInput.password = this.loginForm.value.username;
+    this.formObjectInput.email = this.loginForm.value.username;
+    this.formObjectInput.password = this.loginForm.value.password;
+    this.user.emit(this.formObjectInput);
   }
 
   ngOnDestroy(): void {

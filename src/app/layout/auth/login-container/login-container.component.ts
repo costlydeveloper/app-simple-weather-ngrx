@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { NotificationsService } from '../../../library/popups/notifications.service';
 import { LoggedUserPermissionsService } from '../../../library/secure-data/logged-user-permissions.service';
@@ -19,13 +19,16 @@ export class LoginContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    localStorage.clear();
+    localStorage.removeItem('X-token');
   }
 
   validation(_isValid?: boolean): void {
     this.formIsValid = _isValid;
   }
 
+  onFormChange(_formUser: IUser): void {
+    this.user = _formUser;
+  }
   onSubmit(): void {
     if (this.formIsValid) {
       this.loggedUserPermissionService.setLoggedUser(this.user);
@@ -35,6 +38,13 @@ export class LoginContainerComponent implements OnInit {
         'Form is not valid!',
         DialogLayoutDisplay.WARNING
       );
+    }
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onSubmit();
     }
   }
 }

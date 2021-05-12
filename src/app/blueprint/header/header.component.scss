@@ -1,8 +1,9 @@
 @import "../../styles/pre-import";
 
 .top-nav {
-  background-color: $gray-800;
+  background-color: $gray-100;
   overflow: hidden;
+  box-shadow: 0 0 2px 0 $gray-400;
 
   .container {
     padding: 0 !important;
@@ -20,7 +21,7 @@
     }
 
     a {
-      color: $white;
+      color: $gray-600;
       display: block;
       float: left;
       font-size: 17px;
@@ -29,13 +30,11 @@
       text-decoration: none;
 
       &:hover {
-        background-color: $primary-color;
-        color: $black;
+        color: $primary-color;
       }
 
       &:active {
-        background-color: $secondary-color;
-        color: $primary-color-text;
+        color: $secondary-color;
       }
     }
   }

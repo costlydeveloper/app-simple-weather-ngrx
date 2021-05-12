@@ -1,4 +1,8 @@
-<app-city-multiselect
-  [cities$]="cities$"
-  (selectedCities)="selectedCitiesTrigger($event)"
-></app-city-multiselect>
+<div class="row m-0 p-2">
+  <div class="col">
+    <app-city-multiselect
+      [cities$]="cities$"
+      (selectedCities)="selectedCitiesTrigger($event)"
+    ></app-city-multiselect>
+  </div>
+</div>
