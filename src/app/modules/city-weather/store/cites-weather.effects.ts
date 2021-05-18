@@ -29,7 +29,7 @@ export class CitesWeatherEffects {
         ),
         catchError(() =>
           of({ type: CityWeatherActionType.RESPOND_CITIES_WEATHER_ERROR }).pipe(
-            tap((resp) => {
+            tap(resp => {
               this.notificationsService.evokeToast(
                 'Error',
                 'API error.',

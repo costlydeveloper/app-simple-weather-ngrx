@@ -22,7 +22,7 @@ export class FavoritesEffects {
   @Effect()
   requestFavorites$: Observable<Action> = this.actions$.pipe(
     ofType<RequestFavoritesAction>(FavoritesActionTypes.REQUEST_FAVORITES),
-    switchMap((action) => {
+    switchMap(action => {
       return this.favoritesService.getFavorites().pipe(
         map(
           (response: IFavorites) =>
@@ -30,7 +30,7 @@ export class FavoritesEffects {
         ),
         catchError(() =>
           of({ type: FavoritesActionTypes.RESPONSE_FAVORITES_ERROR }).pipe(
-            tap((resp) => {
+            tap(resp => {
               this.notificationsService.evokeToast(
                 'Error',
                 'API error!',
@@ -45,13 +45,13 @@ export class FavoritesEffects {
   @Effect()
   addFavorite$: Observable<Action> = this.actions$.pipe(
     ofType<AddFavoriteAction>(FavoritesActionTypes.ADD_FAVORITE),
-    switchMap((action) => {
+    switchMap(action => {
       const favorite: number = (action as AddFavoriteAction).payload;
       return this.favoritesService.addFavorite(favorite).pipe(
         map((response: number) => new AddFavoriteResponseAction(response)),
         catchError(() =>
           of({ type: FavoritesActionTypes.ADD_FAVORITE_RESPONSE_ERROR }).pipe(
-            tap((resp) => {
+            tap(resp => {
               this.notificationsService.evokeToast(
                 'Error',
                 'API error!',
@@ -66,7 +66,7 @@ export class FavoritesEffects {
   @Effect()
   removeFavorite$: Observable<Action> = this.actions$.pipe(
     ofType<RemoveFavoriteAction>(FavoritesActionTypes.REMOVE_FAVORITE),
-    switchMap((action) => {
+    switchMap(action => {
       const favorite: number = (action as RemoveFavoriteAction).payload;
       return this.favoritesService.removeFavorite(favorite).pipe(
         map((response: number) => new RemoveFavoriteResponseAction(response)),
@@ -74,7 +74,7 @@ export class FavoritesEffects {
           of({
             type: FavoritesActionTypes.REMOVE_FAVORITE_RESPONSE_ERROR,
           }).pipe(
-            tap((resp) => {
+            tap(resp => {
               this.notificationsService.evokeToast(
                 'Error',
                 'API error!',

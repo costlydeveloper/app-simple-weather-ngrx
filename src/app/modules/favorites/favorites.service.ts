@@ -25,7 +25,7 @@ export class FavoritesService {
     const key: string = `fav-${this.userService
       .getLoggedUserEmail()
       ?.toLowerCase()}`;
-    let favorites: IFavorites = JSON.parse(localStorage.getItem(key));
+    const favorites: IFavorites = JSON.parse(localStorage.getItem(key));
     favorites.cityIDs.push(_favorite);
     localStorage.setItem(key, JSON.stringify(favorites));
     return of(_favorite);
@@ -35,7 +35,7 @@ export class FavoritesService {
     const key: string = `fav-${this.userService
       .getLoggedUserEmail()
       ?.toLowerCase()}`;
-    let favorites: IFavorites = JSON.parse(localStorage.getItem(key));
+    const favorites: IFavorites = JSON.parse(localStorage.getItem(key));
 
     const index = favorites.cityIDs.indexOf(_favorite);
     if (index > -1) {

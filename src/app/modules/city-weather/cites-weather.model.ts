@@ -1,6 +1,6 @@
 import { City, ICity } from '../city/city.model';
 
-//Interface
+// Interface
 
 export interface ICityWeatherAPIResponse {
   cnt: number;

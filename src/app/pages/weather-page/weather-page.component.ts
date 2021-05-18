@@ -43,8 +43,8 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
         this.dayParam = params.get('day');
 
         this.#subscriptions.add(
-          this.cities$.subscribe((items) => {
-            this.city = items.find((item) => {
+          this.cities$.subscribe(items => {
+            this.city = items.find(item => {
               return item.name.toLowerCase() === this.cityParam.toLowerCase();
             });
 

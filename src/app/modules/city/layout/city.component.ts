@@ -30,12 +30,12 @@ export class CityComponent implements OnInit, OnDestroy {
     this.cities$ = this.store.pipe(select(selectCity));
     this.loader$ = this.store.pipe(select(selectCitesLoader));
     this.#subscriptions.add(
-      this.cities$.subscribe((val) => {
+      this.cities$.subscribe(val => {
         // console.log(val);
       })
     );
     this.#subscriptions.add(
-      this.loader$.subscribe((val) => {
+      this.loader$.subscribe(val => {
         // console.log(val);
       })
     );

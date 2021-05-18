@@ -32,7 +32,7 @@ export class DailyWeatherEffects {
           of({
             type: DailyWeatherActionType.RESPONSE_DAILY_WEATHER_ERROR,
           }).pipe(
-            tap((resp) => {
+            tap(resp => {
               this.notificationsService.evokeToast(
                 'Error',
                 'API error!',

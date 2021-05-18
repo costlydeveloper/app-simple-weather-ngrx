@@ -40,13 +40,13 @@ export class CitiesWeatherComponent implements OnInit, OnDestroy {
       }
     );*/
     this.#subscriptions.add(
-      this.citiesWeather$.subscribe((val) => {
+      this.citiesWeather$.subscribe(val => {
         // console.log('citiesWeather$ ', val);
       })
     );
 
     this.#subscriptions.add(
-      this.favorites$.subscribe((val) => {
+      this.favorites$.subscribe(val => {
         // console.log('favorites$', val);
       })
     );

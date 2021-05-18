@@ -24,13 +24,13 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.favorites$ = this.store.pipe(select(selectFavorites));
 
     this.#subscriptions.add(
-      this.citiesWeather$.subscribe((val) => {
+      this.citiesWeather$.subscribe(val => {
         // console.log('citiesWeather$ ', val);
       })
     );
 
     this.#subscriptions.add(
-      this.favorites$.subscribe((favorites) => {
+      this.favorites$.subscribe(favorites => {
         // console.log('favorites$', favorites);
         let string = '';
         favorites.cityIDs.forEach((item, index, array) => {

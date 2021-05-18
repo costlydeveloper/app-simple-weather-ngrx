@@ -18,12 +18,12 @@ export class CityEffects {
   @Effect()
   requestCities$: Observable<Action> = this.actions$.pipe(
     ofType<RequestCityAction>(CityActionType.REQUEST_CITIES),
-    switchMap((action) => {
+    switchMap(action => {
       return this.cityService.getCities().pipe(
         map((response: ICity[]) => new RespondCityAction({ cities: response })),
         catchError(() =>
           of({ type: CityActionType.RESPOND_CITIES_ERROR }).pipe(
-            tap((resp) => {
+            tap(resp => {
               this.notificationsService.evokeToast(
                 'Error',
                 'API error!',

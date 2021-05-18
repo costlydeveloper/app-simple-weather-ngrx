@@ -41,7 +41,7 @@ export class LoginFormComponent implements OnDestroy, OnInit {
     this.#subscriptions.add(
       this.loginForm.statusChanges
         .pipe(
-          tap((item) => {
+          tap(item => {
             this.formIsValid.emit(this.loginForm.valid);
             return item;
           })

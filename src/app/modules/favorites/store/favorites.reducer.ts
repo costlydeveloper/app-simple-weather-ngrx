@@ -26,27 +26,21 @@ export function favoritesReducer(
         }
       };*/
 
-      const newState: IFavoritesModuleState = produce(
-        oldState,
-        (draftState) => {
-          draftState.favorites.cityIDs.push(favorite);
-        }
-      );
+      const newState: IFavoritesModuleState = produce(oldState, draftState => {
+        draftState.favorites.cityIDs.push(favorite);
+      });
 
       return newState;
     }
     case FavoritesActionTypes.REMOVE_FAVORITE_RESPONSE: {
       const favorite = (action as RemoveFavoriteResponseAction).payload;
 
-      const newState: IFavoritesModuleState = produce(
-        oldState,
-        (draftState) => {
-          const index = draftState.favorites.cityIDs.indexOf(favorite);
-          if (index > -1) {
-            draftState.favorites.cityIDs.splice(index, 1);
-          }
+      const newState: IFavoritesModuleState = produce(oldState, draftState => {
+        const index = draftState.favorites.cityIDs.indexOf(favorite);
+        if (index > -1) {
+          draftState.favorites.cityIDs.splice(index, 1);
         }
-      );
+      });
 
       return newState;
     }

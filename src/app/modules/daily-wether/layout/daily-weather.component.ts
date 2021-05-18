@@ -26,7 +26,7 @@ export class DailyWeatherComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.#subscriptions.add(this.citiesDailyWeather$.subscribe((val) => {}));
+    this.#subscriptions.add(this.citiesDailyWeather$.subscribe(val => {}));
   }
 
   ngOnDestroy() {

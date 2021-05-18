@@ -25,7 +25,7 @@ export class NotificationsService {
       });
       const sub = newToastNotification
         .openToastNotification$()
-        .subscribe((resp) => {
+        .subscribe(resp => {
           this.singleToastIsReady = true;
           sub.unsubscribe();
         });

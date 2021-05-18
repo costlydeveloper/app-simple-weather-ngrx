@@ -18,6 +18,6 @@ export class DailyWeatherService {
       .get<IDailyWeatherAPIResponse>(url, {
         observe: 'response',
       })
-      .pipe(map((res) => res.body));
+      .pipe(map(res => res.body));
   }
 }

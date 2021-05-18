@@ -23,7 +23,7 @@ export class CitesWeatherService {
         .get<ICityWeatherAPIResponse>(url, {
           observe: 'response',
         })
-        .pipe(map((res) => res.body))
+        .pipe(map(res => res.body))
         .pipe(delay(100));
     } else {
       return of(new CityWeatherAPIResponse());

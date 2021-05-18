@@ -16,7 +16,7 @@ export const PAGE_ROUTES: Routes = [
       {
         path: 'auth',
         loadChildren: () =>
-          import('./auth/auth.module').then((mod) => mod.AuthModule),
+          import('./auth/auth.module').then(mod => mod.AuthModule),
       },
     ],
   },
@@ -30,14 +30,14 @@ export const PAGE_ROUTES: Routes = [
         path: 'weather/:city-name/:day',
         loadChildren: () =>
           import('./weather-page/weather-page.module').then(
-            (mod) => mod.WeatherPageModule
+            mod => mod.WeatherPageModule
           ),
       },
       {
         path: 'weather/:city-name',
         loadChildren: () =>
           import('./weather-page/weather-page.module').then(
-            (mod) => mod.WeatherPageModule
+            mod => mod.WeatherPageModule
           ),
       },
       { path: 'favorites', redirectTo: 'favorites/', pathMatch: 'full' },
@@ -45,14 +45,14 @@ export const PAGE_ROUTES: Routes = [
         path: 'favorites/:city-name/:day',
         loadChildren: () =>
           import('./favorites-page/favorites-page.module').then(
-            (mod) => mod.FavoritesPageModule
+            mod => mod.FavoritesPageModule
           ),
       },
       {
         path: 'favorites/:city-name',
         loadChildren: () =>
           import('./favorites-page/favorites-page.module').then(
-            (mod) => mod.FavoritesPageModule
+            mod => mod.FavoritesPageModule
           ),
       },
     ],
