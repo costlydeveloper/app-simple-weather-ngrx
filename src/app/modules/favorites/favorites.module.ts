@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 import { CitesWeatherModule } from '../city-weather/cites-weather.module';
 import { FavoriteItemComponent } from './layout/favorite-item/favorite-item.component';
 import { FavoritesComponent } from './layout/favorites.component';
@@ -21,6 +22,7 @@ import { favoritesStateName } from './store/favorites.state';
     CitesWeatherModule,
     RouterModule,
     CdkScrollableModule,
+    TranslateModule,
   ],
 })
 export class FavoritesModule {}

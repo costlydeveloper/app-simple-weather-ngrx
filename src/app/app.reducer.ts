@@ -5,7 +5,7 @@ export function debugMetaReducer(
   reducer: ActionReducer<object>
 ): ActionReducer<object> {
   // @ts-ignore
-  return function (oldState: object, action: Action): object {
+  return (oldState: object, action: Action): object => {
     const newState = reducer(oldState, action);
     const actionTypeSplit = action.type.split('] ');
     const moduleName =

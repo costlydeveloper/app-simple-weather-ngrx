@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SharedModule } from '../../shared.module';
 import { CityMultiselectComponent } from './layout/city-multiselect/city-multiselect.component';
@@ -21,6 +22,7 @@ import { cityStateName } from './store/city.state';
     EffectsModule.forFeature([CityEffects]),
     FormsModule,
     SharedModule,
+    TranslateModule,
   ],
 })
 export class CityModule {}

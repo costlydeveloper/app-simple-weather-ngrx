@@ -6,8 +6,8 @@
           <div class="w-100 text-center mb-3">
             <img src="assets/images/logo.png" />
           </div>
-          <h2>Sign in</h2>
-          <p class="lead">Weather application.</p>
+          <h2>{{ "PARAGRAPH.TITLE" | translate }}</h2>
+          <p class="lead">{{ "PARAGRAPH.INTRO_TEXT" | translate }}</p>
 
           <app-login-form
             [formObjectInput]="user"
@@ -21,11 +21,11 @@
               type="submit"
               (click)="onSubmit()"
             >
-              Sign In
+              {{ "ACTION.SIGN_IN" | translate }}
             </button>
           </div>
           <p class="small text-center">
-            By clicking the Sign In button, you agree to use this awesome app.
+            {{ "PARAGRAPH.TOS" | translate }}
           </p>
         </div>
       </div>

@@ -1,0 +1,11 @@
+{
+  "DROPDOWN": {
+    "SELECT_CITY": "Select a City"
+  },
+  "PARAGRAPH": {
+    "NO_CITY_SELECTED": "There are no selected cities!"
+  },
+  "ACTION": {
+    "ADD_FAVORITE": "Favorite"
+  }
+}

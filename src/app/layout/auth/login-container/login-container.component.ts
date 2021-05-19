@@ -1,7 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
+import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { NotificationsService } from '../../../library/popups/notifications.service';
 import { LoggedUserPermissionsService } from '../../../library/secure-data/logged-user-permissions.service';
+import { I18nSuperclass } from '../../../modules/i18n/superclass/i18n.superclass';
 import { IUser, User } from '../../../modules/user/user.model';
 
 @Component({
@@ -9,14 +12,18 @@ import { IUser, User } from '../../../modules/user/user.model';
   templateUrl: './login-container.component.html',
   styleUrls: ['./login-container.component.scss'],
 })
-export class LoginContainerComponent implements OnInit {
+export class LoginContainerComponent extends I18nSuperclass implements OnInit {
   user: IUser = new User();
   formIsValid: boolean = false;
 
   constructor(
+    readonly translate: TranslateService,
+    private store: Store<any>,
     private loggedUserPermissionService: LoggedUserPermissionsService,
     private notificationsService: NotificationsService
-  ) {}
+  ) {
+    super(store, translate);
+  }
 
   ngOnInit(): void {
     localStorage.removeItem('X-token');

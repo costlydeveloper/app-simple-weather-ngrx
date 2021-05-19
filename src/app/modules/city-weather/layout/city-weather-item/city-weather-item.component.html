@@ -41,8 +41,10 @@
           [(ngModel)]="isFavorite"
           (change)="addRemoveFavorite(cityWeatherItem.id, $event)"
         />
-        <label class="p-checkbox-label" for="favorite-{{ cityWeatherItem?.id }}"
-          >Favorite</label
+        <label
+          class="p-checkbox-label"
+          for="favorite-{{ cityWeatherItem?.id }}"
+          >{{ "ACTION.ADD_FAVORITE" | translate }}</label
         >
       </div>
     </form>

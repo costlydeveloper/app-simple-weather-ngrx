@@ -3,7 +3,11 @@
 .top-nav {
   background-color: $gray-100;
   box-shadow: 0 0 2px 0 $gray-400;
-  overflow: hidden;
+  display: flex;
+
+  .lang-drop-down-wrapper {
+    padding-top: 6px;
+  }
 
   .container {
     padding: 0 !important;

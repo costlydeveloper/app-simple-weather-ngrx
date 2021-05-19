@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { select, Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subscription } from 'rxjs';
 import { ICity } from '../../modules/city/city.model';
 import { RequestCityAction } from '../../modules/city/store/city.actions';
@@ -9,13 +10,16 @@ import { ICityDailyWeather } from '../../modules/daily-wether/daily-weather.mode
 import { RequestDailyWeatherAction } from '../../modules/daily-wether/store/daily-weather.actions';
 import { selectDailyWeather } from '../../modules/daily-wether/store/daily-weather.selector';
 import { RequestFavoritesAction } from '../../modules/favorites/store/favorites.actions';
+import { I18nSuperclass } from '../../modules/i18n/superclass/i18n.superclass';
 
 @Component({
   selector: 'app-favorites-page',
   templateUrl: './favorites-page.component.html',
   styleUrls: ['./favorites-page.component.scss'],
 })
-export class FavoritesPageComponent implements OnInit, OnDestroy {
+export class FavoritesPageComponent
+  extends I18nSuperclass
+  implements OnInit, OnDestroy {
   cities$: Observable<ICity[]>;
   citiesDailyWeather$: Observable<ICityDailyWeather>;
   cityParam: string;
@@ -23,7 +27,13 @@ export class FavoritesPageComponent implements OnInit, OnDestroy {
   city: ICity;
   #subscriptions: Subscription = new Subscription();
 
-  constructor(private route: ActivatedRoute, private store: Store<any>) {}
+  constructor(
+    readonly translate: TranslateService,
+    private route: ActivatedRoute,
+    private store: Store<any>
+  ) {
+    super(store, translate);
+  }
 
   ngOnInit(): void {
     this.store.dispatch(new RequestCityAction());

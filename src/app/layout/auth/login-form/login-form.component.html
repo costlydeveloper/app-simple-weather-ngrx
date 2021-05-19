@@ -6,7 +6,7 @@
         class="form-control"
         formControlName="username"
         type="email"
-        placeholder="Email Address"
+        [placeholder]="'FORM.EMAIL_PLACEHOLDER' | translate"
       />
     </div>
   </div>
@@ -18,7 +18,7 @@
         formControlName="password"
         type="password"
         autocomplete="new-password"
-        placeholder="Password"
+        [placeholder]="'FORM.PASSWORD_PLACEHOLDER' | translate"
       />
     </div>
   </div>

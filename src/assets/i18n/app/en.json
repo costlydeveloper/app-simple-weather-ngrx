@@ -1,0 +1,11 @@
+{
+  "APP_TITLE": "Weather Awesome",
+  "MENU": {
+    "HOME": "Home",
+    "FAVORITES": "Favorites"
+  },
+  "LANG_SELECT": {
+    "HR": "Croatian",
+    "EN": "English"
+  }
+}

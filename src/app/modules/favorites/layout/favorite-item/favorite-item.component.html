@@ -29,8 +29,10 @@
       </div>
     </div>
     <div class="form-check-block">
-      <a class="p-checkbox-label" (click)="removeFavorite(cityWeatherItem.id)"
-        >Remove</a
+      <a
+        class="p-checkbox-label"
+        (click)="removeFavorite(cityWeatherItem.id)"
+        >{{ "ACTION.REMOVE_FAVORITE" | translate }}</a
       >
     </div>
   </div>

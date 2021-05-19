@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row hidden-md-up">
     <ng-template ngFor let-cityWeather [ngForOf]="citiesWeather$ | async">
-      <!--<ng-container *ngIf="!(loader$ | async) && (cities$ | async)?.length > 0">-->
       <ng-container *ngIf="!(loader$ | async)">
         <div class="col-md-3 mb-2 mt-2">
           <app-city-weather-item
@@ -15,7 +14,7 @@
     </ng-template>
   </div>
   <div class="center-text-container" *ngIf="!(citiesWeather$ | async).length">
-    There are no selected cities!
+    {{ "PARAGRAPH.NO_CITY_SELECTED" | translate }}
   </div>
 </div>
 <app-loader [@inOutAnimation] *ngIf="loader$ | async"></app-loader>

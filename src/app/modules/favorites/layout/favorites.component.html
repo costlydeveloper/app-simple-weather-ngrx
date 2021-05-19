@@ -20,6 +20,6 @@
     class="center-text-container"
     *ngIf="!(favorites$ | async).cityIDs.length"
   >
-    There are no favorites!
+    {{ "PARAGRAPH.NO_CITY_FAVORITES" | translate }}
   </div>
 </div>

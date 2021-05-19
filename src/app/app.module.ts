@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,12 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NgxAwesomePopupModule,
   ToastNotificationConfigModule,
-  ToastUserViewTypeEnum,
 } from '@costlydeveloper/ngx-awesome-popup';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { metaReducers } from './app.reducer';
@@ -26,6 +27,10 @@ import { FavoritesModule } from './modules/favorites/favorites.module';
 import { PagesModule } from './pages/pages.module';
 import { WeatherPageComponent } from './pages/weather-page/weather-page.component';
 import { SharedModule } from './shared.module';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/app/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -46,10 +51,14 @@ import { SharedModule } from './shared.module';
     FormsModule,
     SharedModule,
     NgxAwesomePopupModule.forRoot(),
-    ToastNotificationConfigModule.forRoot({
-      ToastCoreConfig: {
-        ToastUserViewType: ToastUserViewTypeEnum.SIMPLE,
+    ToastNotificationConfigModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
       },
+      isolate: true,
     }),
     StoreModule.forRoot(
       {

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DataViewModule } from 'primeng/dataview';
 import { SharedModule } from '../../shared.module';
@@ -25,6 +26,7 @@ import { cityWeatherStateName } from './store/cites-weather.state';
     RouterModule,
     FormsModule,
     SharedModule,
+    TranslateModule,
   ],
 })
 export class CitesWeatherModule {}

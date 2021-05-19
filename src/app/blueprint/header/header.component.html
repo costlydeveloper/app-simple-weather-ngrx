@@ -11,9 +11,11 @@
       [ngClass]="rla.isActive ? 'active' : ''"
       #rla="routerLinkActive"
       >{{ item.name }}</a
-    >
-    <a class="float-end" routerLink="/"
+    ><a class="float-end" routerLink="/"
       ><i class="fa fa-sign-out" aria-hidden="true"></i
     ></a>
+    <div class="float-end lang-drop-down-wrapper">
+      <app-language-selector></app-language-selector>
+    </div>
   </div>
 </div>
