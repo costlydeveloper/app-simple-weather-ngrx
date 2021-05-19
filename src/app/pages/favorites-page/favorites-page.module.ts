@@ -2,16 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CitesWeatherModule } from '../../modules/city-weather/cites-weather.module';
 import { DailyWeatherModule } from '../../modules/daily-wether/daily-weather.module';
 import { FavoritesModule } from '../../modules/favorites/favorites.module';
+import { I18nJsonLoader } from '../../modules/i18n/i18n-json-loader';
 import { FavoritesPageRoutingModule } from './favorites-page-routing.module';
 import { FavoritesPageComponent } from './favorites-page.component';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/favorites/', '.json');
-}
 
 @NgModule({
   declarations: [FavoritesPageComponent],
@@ -24,7 +20,7 @@ export function createTranslateLoader(http: HttpClient) {
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader,
+        useFactory: new I18nJsonLoader().set('favorites'),
         deps: [HttpClient],
       },
       isolate: true,

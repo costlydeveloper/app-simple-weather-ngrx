@@ -1,10 +1,6 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { LoggedUserPermissionsService } from './logged-user-permissions.service';
 
 @Injectable({

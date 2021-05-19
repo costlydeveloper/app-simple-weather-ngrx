@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { NotificationsService } from '../../../library/popups/notifications.service';
+import { APINotificationService } from '../../../library/popups/api-notification.service';
 import { IDailyWeatherAPIResponse } from '../daily-weather.model';
 import { DailyWeatherService } from '../daily-weather.service';
 import {
@@ -33,11 +32,7 @@ export class DailyWeatherEffects {
             type: DailyWeatherActionType.RESPONSE_DAILY_WEATHER_ERROR,
           }).pipe(
             tap(resp => {
-              this.notificationsService.evokeToast(
-                'Error',
-                'API error!',
-                DialogLayoutDisplay.DANGER
-              );
+              this.apiNotificationsService.validationError();
             })
           )
         )
@@ -46,7 +41,7 @@ export class DailyWeatherEffects {
   );
 
   constructor(
-    private notificationsService: NotificationsService,
+    private apiNotificationsService: APINotificationService,
     private readonly actions$: Actions,
     private readonly dailyWeatherService: DailyWeatherService
   ) {}

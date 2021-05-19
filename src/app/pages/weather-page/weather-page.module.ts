@@ -2,12 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { I18nJsonLoader } from '../../modules/i18n/i18n-json-loader';
 import { WeatherPageRoutingModule } from './weather-page-routing.module';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/weather/', '.json');
-}
 
 @NgModule({
   declarations: [],
@@ -17,7 +13,7 @@ export function createTranslateLoader(http: HttpClient) {
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader,
+        useFactory: new I18nJsonLoader().set('weather'),
         deps: [HttpClient],
       },
       isolate: true,

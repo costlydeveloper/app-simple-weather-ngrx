@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DialogLayoutDisplay } from '@costlydeveloper/ngx-awesome-popup';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { NotificationsService } from '../../../library/popups/notifications.service';
+import { APINotificationService } from '../../../library/popups/api-notification.service';
 import { IFavorites } from '../favorites.model';
 import { FavoritesService } from '../favorites.service';
 import {
@@ -31,11 +30,7 @@ export class FavoritesEffects {
         catchError(() =>
           of({ type: FavoritesActionTypes.RESPONSE_FAVORITES_ERROR }).pipe(
             tap(resp => {
-              this.notificationsService.evokeToast(
-                'Error',
-                'API error!',
-                DialogLayoutDisplay.DANGER
-              );
+              this.apiNotificationsService.validationError();
             })
           )
         )
@@ -52,11 +47,7 @@ export class FavoritesEffects {
         catchError(() =>
           of({ type: FavoritesActionTypes.ADD_FAVORITE_RESPONSE_ERROR }).pipe(
             tap(resp => {
-              this.notificationsService.evokeToast(
-                'Error',
-                'API error!',
-                DialogLayoutDisplay.DANGER
-              );
+              this.apiNotificationsService.validationError();
             })
           )
         )
@@ -75,11 +66,7 @@ export class FavoritesEffects {
             type: FavoritesActionTypes.REMOVE_FAVORITE_RESPONSE_ERROR,
           }).pipe(
             tap(resp => {
-              this.notificationsService.evokeToast(
-                'Error',
-                'API error!',
-                DialogLayoutDisplay.DANGER
-              );
+              this.apiNotificationsService.validationError();
             })
           )
         )
@@ -88,7 +75,7 @@ export class FavoritesEffects {
   );
 
   constructor(
-    private notificationsService: NotificationsService,
+    private apiNotificationsService: APINotificationService,
     private readonly actions$: Actions,
     private readonly favoritesService: FavoritesService
   ) {}

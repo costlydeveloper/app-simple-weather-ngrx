@@ -4,16 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  NgxAwesomePopupModule,
-  ToastNotificationConfigModule,
-} from '@costlydeveloper/ngx-awesome-popup';
+import { NgxAwesomePopupModule, ToastNotificationConfigModule } from '@costlydeveloper/ngx-awesome-popup';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { metaReducers } from './app.reducer';
@@ -24,13 +20,17 @@ import { CitesWeatherModule } from './modules/city-weather/cites-weather.module'
 import { CityModule } from './modules/city/city.module';
 import { DailyWeatherModule } from './modules/daily-wether/daily-weather.module';
 import { FavoritesModule } from './modules/favorites/favorites.module';
+import { I18nJsonLoader } from './modules/i18n/i18n-json-loader';
 import { PagesModule } from './pages/pages.module';
 import { WeatherPageComponent } from './pages/weather-page/weather-page.component';
 import { SharedModule } from './shared.module';
 
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/app/', '.json');
-}
+/*export function createTranslateLoader(http: HttpClient) {
+  return new MultiTranslateHttpLoader(http, [
+    { prefix: './assets/i18n/app/', suffix: '.json' },
+    { prefix: './assets/i18n/notifications/', suffix: '.json' },
+  ]);
+}*/
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader,
+        useFactory: new I18nJsonLoader().set('app', 'notifications'),
         deps: [HttpClient],
       },
       isolate: true,
