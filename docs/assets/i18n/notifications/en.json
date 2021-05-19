@@ -1,0 +1,14 @@
+{
+  "FORM_VALIDATION": {
+    "ERROR": {
+      "TITLE": "Warning",
+      "MESSAGE": "Form is not valid!"
+    }
+  },
+  "API": {
+    "ERROR": {
+      "TITLE": "Error",
+      "MESSAGE": "API error!"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "DROPDOWN": {
+    "SELECT_CITY": "Odaberi grad"
+  },
+  "PARAGRAPH": {
+    "NO_CITY_SELECTED": "Nema odabranih gradova!"
+  },
+  "ACTION": {
+    "ADD_FAVORITE": "Omiljeni"
+  }
+}

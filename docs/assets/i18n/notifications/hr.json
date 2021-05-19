@@ -1,0 +1,14 @@
+{
+  "FORM_VALIDATION": {
+    "ERROR": {
+      "TITLE": "Oprez",
+      "MESSAGE": "Unos u formu je neispravan!"
+    }
+  },
+  "API": {
+    "ERROR": {
+      "TITLE": "Greška",
+      "MESSAGE": "Pogreška u dohvaćanju podataka!"
+    }
+  }
+}
