@@ -1,0 +1,14 @@
+{
+  "FORM": {
+    "EMAIL_PLACEHOLDER": "Email adresa...",
+    "PASSWORD_PLACEHOLDER": "Lozinka..."
+  },
+  "PARAGRAPH": {
+    "TOS": "Klikom na gumb Prijava pristajete na upotrebu ove sjajne aplikacije.",
+    "INTRO_TEXT": "Vremenska prognoza.",
+    "TITLE": "Prijava"
+  },
+  "ACTION": {
+    "SIGN_IN": "Prijava"
+  }
+}
