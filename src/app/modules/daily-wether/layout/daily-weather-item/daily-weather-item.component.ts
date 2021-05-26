@@ -41,9 +41,11 @@ export class DailyWeatherItemComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['dayParam'].currentValue && this.dayParam) {
       this.specificDayWeatherList = this.cityDailyWeather.list
-        .filter(item => moment('ddd').format('ddd') === this.dayParam)
+        .filter(item => {
+          return moment(item.dt_txt).format('ddd') === this.dayParam;
+        })
         .map(item => {
-          const hour = moment('HH:mm').format('HH:mm');
+          const hour = moment(item.dt_txt).format('HH:mm');
           return {
             hour,
             iconURL: `http://openweathermap.org/img/w/${item.weather[0].icon}.png`,

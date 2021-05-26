@@ -1,14 +1,10 @@
 {
-  "FORM": {
-    "EMAIL_PLACEHOLDER": "Email adresa...",
-    "PASSWORD_PLACEHOLDER": "Lozinka..."
+  "LANG_SELECT": {
+    "EN": "Engleski",
+    "HR": "Hrvatski"
   },
-  "PARAGRAPH": {
-    "TOS": "Klikom na gumb Prijava pristajete na upotrebu ove sjajne aplikacije.",
-    "INTRO_TEXT": "Vremenska prognoza.",
-    "TITLE": "Prijava"
-  },
-  "ACTION": {
-    "SIGN_IN": "Prijava"
+  "MENU": {
+    "HOME": "Home",
+    "FAVORITES": "Omiljeni"
   }
 }

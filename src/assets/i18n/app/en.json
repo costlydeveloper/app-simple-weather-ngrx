@@ -1,14 +1,10 @@
 {
-  "FORM": {
-    "EMAIL_PLACEHOLDER": "Email address...",
-    "PASSWORD_PLACEHOLDER": "Password..."
+  "LANG_SELECT": {
+    "EN": "English",
+    "HR": "Croatian"
   },
-  "PARAGRAPH": {
-    "TOS": "By clicking the Sign In button, you agree to use this awesome app.",
-    "INTRO_TEXT": "Weather application.",
-    "TITLE": "Sign In"
-  },
-  "ACTION": {
-    "SIGN_IN": "Sign In"
+  "MENU": {
+    "HOME": "Home",
+    "FAVORITES": "Favorites"
   }
 }
