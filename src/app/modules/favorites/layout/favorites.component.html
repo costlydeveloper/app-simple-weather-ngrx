@@ -1,0 +1,25 @@
+<div class="container p-2">
+  <div class="row m-0 hidden-md-up" *ngIf="(favorites$ | async).cityIDs.length">
+    <ng-template ngFor let-cityWeather [ngForOf]="citiesWeather$ | async">
+      <!--<ng-container *ngIf="!(loader$ | async) && (cities$ | async)?.length > 0">-->
+      <ng-container>
+        <div class="col-md-3 mb-2 mt-2">
+          <app-favorite-item
+            [cityWeatherItem]="cityWeather"
+            (removeFavoriteID)="removeFavoriteID($event)"
+          ></app-favorite-item>
+          <!--	<app-city-weather-item
+                      [isFavorite]="(favorites$ | async).cityIDs.indexOf(cityWeather.id) > -1"
+                      [cityWeatherItem]="cityWeather"
+                  ></app-city-weather-item>-->
+        </div>
+      </ng-container>
+    </ng-template>
+  </div>
+  <div
+    class="center-text-container"
+    *ngIf="!(favorites$ | async).cityIDs.length"
+  >
+    {{ "PARAGRAPH.NO_CITY_FAVORITES" | translate }}
+  </div>
+</div>

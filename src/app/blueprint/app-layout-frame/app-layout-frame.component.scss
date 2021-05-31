@@ -1,0 +1,22 @@
+.container {
+  margin-top: 30px;
+  min-height: 88vh;
+
+  :host {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+
+    main {
+      position: relative;
+    }
+
+    ::ng-deep router-outlet ~ * {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+}

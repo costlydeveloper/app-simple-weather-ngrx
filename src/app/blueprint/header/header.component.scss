@@ -1,0 +1,45 @@
+@import "../../styles/pre-import";
+
+.top-nav {
+  background-color: $gray-100;
+  box-shadow: 0 0 2px 0 $gray-400;
+  display: flex;
+
+  .lang-drop-down-wrapper {
+    padding-top: 6px;
+  }
+
+  .container {
+    padding: 0 !important;
+
+    .logo-block {
+      display: block;
+      float: left;
+      height: 40px;
+      margin: 4px;
+      padding-left: 10px;
+
+      img {
+        height: 45px;
+      }
+    }
+
+    a {
+      color: $gray-600;
+      display: block;
+      float: left;
+      font-size: 17px;
+      padding: 14px 16px;
+      text-align: center;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      &.active {
+        color: $secondary-color;
+      }
+    }
+  }
+}

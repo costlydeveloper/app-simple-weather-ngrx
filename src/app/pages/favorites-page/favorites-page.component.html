@@ -1,0 +1,10 @@
+<div class="row m-0">
+  <div class="col-md-12 p-2">
+    <app-favorites-container *ngIf="!city"></app-favorites-container>
+    <app-daily-weather
+      [dayParam]="dayParam"
+      [cityID]="city.id"
+      *ngIf="city"
+    ></app-daily-weather>
+  </div>
+</div>

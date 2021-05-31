@@ -1,0 +1,40 @@
+$surface-a: #f4e7da7a;
+$surface-b: #e0e0e0d1;
+$text-color: #495057;
+$primary-color: #b59a91;
+$secondary-color: #01696a;
+$primary-color-text: #ffffff;
+$font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica,
+  Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+$white: #ffffff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #989ea5 !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000000 !default;
+
+$blue: #2f8ee5 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #e46464 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #2a9187 !default;
+$teal: #20c997 !default;
+$cyan: #3caea3 !default;
+
+$primary: $primary-color !default;
+$secondary: $gray-500 !default;
+$success: $cyan !default;
+$info: $blue !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;

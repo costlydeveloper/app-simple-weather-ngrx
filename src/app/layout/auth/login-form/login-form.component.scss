@@ -1,0 +1,25 @@
+@import "src/app/styles/variables";
+
+.fa {
+  font-size: 21px;
+  position: relative;
+  top: 8px;
+}
+
+.input-ico {
+  i {
+    left: 8px;
+    position: absolute;
+    top: 8px;
+    z-index: 4;
+  }
+
+  input {
+    border-radius: 3px !important;
+    padding-left: 40px;
+
+    &.ng-invalid {
+      background-color: lighten($red, 25);
+    }
+  }
+}

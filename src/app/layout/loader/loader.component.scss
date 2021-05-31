@@ -1,0 +1,155 @@
+@import "../../styles/pre-import";
+
+.loader-container {
+  align-content: center;
+  background: $white;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .loader {
+    --duration: 3s;
+    display: inline-block;
+    height: 44px;
+    margin: 0 16px;
+    position: relative;
+    width: 44px;
+
+    &:before {
+      animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86)
+        infinite;
+      background: $secondary-color;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      height: 6px;
+      left: 19px;
+      position: absolute;
+      top: 37px;
+      transform: translate(-18px, -18px);
+      width: 6px;
+    }
+
+    svg {
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      rect,
+      polygon,
+      circle {
+        fill: none;
+        stroke: $text-color;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+
+      polygon {
+        animation: pathTriangle var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        stroke-dasharray: 145 (221 - 145) 145 (221 - 145);
+        stroke-dashoffset: 0;
+      }
+
+      rect {
+        animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        stroke-dasharray: (256 / 4 * 3) (256 / 4) (256 / 4 * 3) (256 / 4);
+        stroke-dashoffset: 0;
+      }
+
+      circle {
+        animation: pathCircle var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        stroke-dasharray: (200 / 4 * 3) (200 / 4) (200 / 4 * 3) (200 / 4);
+        stroke-dashoffset: 75;
+      }
+    }
+
+    &.triangle {
+      width: 48px;
+
+      &:before {
+        animation: dotTriangle var(--duration)
+          cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+        left: 21px;
+        transform: translate(-10px, -18px);
+      }
+    }
+  }
+}
+
+@keyframes pathTriangle {
+  33% {
+    stroke-dashoffset: 74;
+  }
+  66% {
+    stroke-dashoffset: 147;
+  }
+  100% {
+    stroke-dashoffset: 221;
+  }
+}
+
+@keyframes dotTriangle {
+  33% {
+    transform: translate(0, 0);
+  }
+  66% {
+    transform: translate(10px, -18px);
+  }
+  100% {
+    transform: translate(-10px, -18px);
+  }
+}
+
+@keyframes pathRect {
+  25% {
+    stroke-dashoffset: 64;
+  }
+  50% {
+    stroke-dashoffset: 128;
+  }
+  75% {
+    stroke-dashoffset: 192;
+  }
+  100% {
+    stroke-dashoffset: 256;
+  }
+}
+
+@keyframes dotRect {
+  25% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(18px, -18px);
+  }
+  75% {
+    transform: translate(0, -36px);
+  }
+  100% {
+    transform: translate(-18px, -18px);
+  }
+}
+
+@keyframes pathCircle {
+  25% {
+    stroke-dashoffset: 125;
+  }
+  50% {
+    stroke-dashoffset: 175;
+  }
+  75% {
+    stroke-dashoffset: 225;
+  }
+  100% {
+    stroke-dashoffset: 275;
+  }
+}

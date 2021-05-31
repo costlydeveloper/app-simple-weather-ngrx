@@ -1,0 +1,51 @@
+@import "src/app/styles/variables";
+
+.card {
+  .inline-list-item {
+    list-style: none;
+    text-align: center;
+  }
+
+  .first-capital::first-letter {
+    text-transform: capitalize;
+  }
+
+  .form-check-block {
+    background: $surface-b;
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid $gray-200;
+    display: flex;
+    height: 50px;
+    margin: 7px -16px -16px -16px;
+    padding: 10px;
+
+    .p-checkbox-label {
+      left: 7px;
+      position: relative;
+      top: 7px;
+    }
+
+    .star {
+      color: $yellow;
+      cursor: pointer;
+      font-size: 20px;
+      text-shadow: 0 0 2px $red;
+      visibility: hidden;
+
+      &:before {
+        color: $gray-600;
+        content: "\2606";
+        position: absolute;
+        text-shadow: none;
+        visibility: visible;
+      }
+
+      &:checked:before {
+        color: $yellow;
+        content: "\2605";
+        position: absolute;
+        text-shadow: 0 0 2px $red;
+      }
+    }
+  }
+}

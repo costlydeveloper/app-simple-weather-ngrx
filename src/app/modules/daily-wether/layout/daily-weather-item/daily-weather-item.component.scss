@@ -1,0 +1,25 @@
+@import "src/app/styles/variables";
+
+.inline-list-item {
+  list-style: none;
+  text-align: center;
+}
+
+.card {
+  border: none;
+}
+
+.tmp-wrap {
+  span {
+    font-size: 0.9em;
+  }
+
+  span:first-of-type {
+    color: $gray-600;
+    margin-right: 6px;
+  }
+
+  span:last-of-type {
+    color: $gray-500;
+  }
+}

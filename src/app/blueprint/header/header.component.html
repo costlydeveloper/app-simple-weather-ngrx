@@ -1,0 +1,21 @@
+<div class="top-nav">
+  <div class="container">
+    <div class="logo-block">
+      <img src="assets/images/full-logo.png" />
+    </div>
+    <a
+      *ngFor="let item of menuItems"
+      [routerLink]="item.route"
+      [routerLinkActiveOptions]="{ exact: false }"
+      [routerLinkActive]=""
+      [ngClass]="rla.isActive ? 'active' : ''"
+      #rla="routerLinkActive"
+      >{{ item.name }}</a
+    ><a class="float-end" routerLink="/"
+      ><i class="fa fa-sign-out" aria-hidden="true"></i
+    ></a>
+    <div class="float-end lang-drop-down-wrapper">
+      <app-language-selector></app-language-selector>
+    </div>
+  </div>
+</div>
